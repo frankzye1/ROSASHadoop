@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="hive-serde-0.14.0.2.2.6.0-2800">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../libs/hive-serde-0.14.0.2.2.6.0-2800.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
