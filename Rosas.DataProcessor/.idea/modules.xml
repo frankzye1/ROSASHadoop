@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Rosas.DataProcessor.iml" filepath="$PROJECT_DIR$/Rosas.DataProcessor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataProcessor.iml" filepath="$PROJECT_DIR$/DataProcessor.iml" />
     </modules>
   </component>
 </project>

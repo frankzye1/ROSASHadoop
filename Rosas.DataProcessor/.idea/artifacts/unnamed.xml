@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="unnamed">
+    <output-path>$PROJECT_DIR$/out/artifacts</output-path>
+    <root id="archive" name="Rosas.DataProcessor.jar">
+      <element id="module-output" name="DataProcessor" />
+    </root>
+  </artifact>
+</component>

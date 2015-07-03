@@ -1,25 +1,26 @@
-package rosas.dataprocess;
+package rosas.dataprocessor;
 
-import org.apache.commons.logging.LogFactory;
 import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.hive.ql.exec.UDAF;
 import org.apache.hadoop.hive.ql.exec.UDAFEvaluator;
 
 //
-//MR扇区覆盖集中度
+//MR覆盖率
 //
 
-public class AverageUDAF extends UDAF {
+public class MR_Coverage_Rate_UDAF extends UDAF {
     public static class UDAFAvgPriceState {
         private int rate = 0 ;
         private int rateTotal = 0;
     }
 
-    static final Log LOG = LogFactory.getLog(AverageUDAF.class.getName());
+    static final Log LOG = LogFactory.getLog(MR_Coverage_Rate_UDAF.class.getName());
 
     public static class Evaluator implements UDAFEvaluator {
 
         UDAFAvgPriceState state;
+
         public Evaluator() {
             super();
             LOG.info("go into evaluator");
@@ -39,9 +40,10 @@ public class AverageUDAF extends UDAF {
                 int length = rates.length;
                 LOG.info("iterate length:" + length);
                 for (int i = 0; i < length; i++) {
-                    int rate = Integer.parseInt(rates[i].replace("\"",""));
-                    int index = i + 1;
-                    state.rate += rate * index * 1.0;
+                    int rate = Integer.parseInt(rates[i].replace("\"", ""));
+                    if (i > 6) {
+                        state.rate += rate;
+                    }
                     state.rateTotal += rate;
                 }
             } catch (Exception e) {
@@ -62,7 +64,7 @@ public class AverageUDAF extends UDAF {
                     state.rate += mState.rate;
                     state.rateTotal += mState.rateTotal;
                 }
-            }catch(Exception e){
+            } catch (Exception e) {
                 LOG.error(e.toString());
             }
             return true;
@@ -73,7 +75,7 @@ public class AverageUDAF extends UDAF {
             LOG.info("state.rate:" + state.rate);
             LOG.info("state.rateTotal:" + state.rateTotal);
             if (state.rateTotal != 0) {
-                return Math.round((state.rate * 1.0 / (state.rateTotal * 5)) * 100) * 1.0 / 100;
+                return Math.round((state.rate * 1.0 / (state.rateTotal)) * 100) * 1.0 / 100;
             } else
                 return 0;
         }
