@@ -8,16 +8,16 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 public class MR_Coverage_Rate_UDAFTEST {
-    MR_SectorCoverage_UDAF.Evaluator ave;
+    MR_Coverage_Rate_UDAF.Evaluator ave;
 
     @Test
     public void evaluatesExpression() {
-        ave = new MR_SectorCoverage_UDAF.Evaluator();
-        String[] rates = new String[]{"0", "1", "2"};
+        ave = new MR_Coverage_Rate_UDAF.Evaluator();
+        String[] rates = new String[]{"abc", "0", "0", "0", "0", "0", "0", "2", "2", "2", "2", "2", "2"};
         try {
             ave.iterate(rates);
             double v = ave.terminate();
-            Assert.assertEquals(0.53, v);
+            Assert.assertEquals(1.0, v);
         } catch (Exception e) {
 
         }

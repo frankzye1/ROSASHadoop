@@ -6,16 +6,16 @@ import org.apache.hadoop.hive.ql.exec.UDAF;
 import org.apache.hadoop.hive.ql.exec.UDAFEvaluator;
 
 //
-//MR覆盖率
+//MR质差话务比例
 //
 
-public class MR_Coverage_Rate_UDAF extends UDAF {
+public class MR_PoorQualityTelephoneTrafficRatio_UDAF extends UDAF {
     public static class UDAFAvgPriceState {
         private int rate = 0 ;
         private int rateTotal = 0;
     }
 
-    static final Log LOG = LogFactory.getLog(MR_Coverage_Rate_UDAF.class.getName());
+    static final Log LOG = LogFactory.getLog(MR_PoorQualityTelephoneTrafficRatio_UDAF.class.getName());
 
     public static class Evaluator implements UDAFEvaluator {
 
@@ -46,7 +46,7 @@ public class MR_Coverage_Rate_UDAF extends UDAF {
                     }
                     catch (Exception e) {
                     }
-                    if (i > 6) {
+                    if (i < 10) {
                         state.rate += rate;
                     }
                     state.rateTotal += rate;
