@@ -1,25 +1,26 @@
 package rosas.dataprocessor;
 
-import org.apache.commons.logging.LogFactory;
 import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.hive.ql.exec.UDAF;
 import org.apache.hadoop.hive.ql.exec.UDAFEvaluator;
 
 //
-//MR扇区覆盖集中度
+//MR小区用户分布
 //
 
-public class MR_SectorCoverage_UDAF extends UDAF {
+public class MR_DistrictUserDistribution_UDAF extends UDAF {
     public static class UDAFAvgPriceState {
         private int rate = 0 ;
         private int rateTotal = 0;
     }
 
-    static final Log LOG = LogFactory.getLog(MR_SectorCoverage_UDAF.class.getName());
+    static final Log LOG = LogFactory.getLog(MR_DistrictUserDistribution_UDAF.class.getName());
 
     public static class Evaluator implements UDAFEvaluator {
 
         UDAFAvgPriceState state;
+
         public Evaluator() {
             super();
             LOG.info("go into evaluator");
@@ -64,7 +65,7 @@ public class MR_SectorCoverage_UDAF extends UDAF {
                     state.rate += mState.rate;
                     state.rateTotal += mState.rateTotal;
                 }
-            }catch(Exception e){
+            } catch (Exception e) {
                 LOG.error(e.toString());
             }
             return true;
@@ -75,7 +76,7 @@ public class MR_SectorCoverage_UDAF extends UDAF {
             LOG.info("state.rate:" + state.rate);
             LOG.info("state.rateTotal:" + state.rateTotal);
             if (state.rateTotal != 0) {
-                return Math.round((state.rate * 1.0 / (state.rateTotal * 5)) * 100) * 1.0 / 100;
+                return Math.round((state.rate * 1.0 / (state.rateTotal)) * 100) * 1.0 / 100;
             } else
                 return 0;
         }
