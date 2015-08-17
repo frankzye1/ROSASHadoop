@@ -17,7 +17,7 @@ public class MR_PoorQualityTelephoneTrafficRatio_UDAFTEST {
         try {
             ave.iterate(rates);
             double v = ave.terminate();
-            Assert.assertEquals(0.54, v);
+            Assert.assertEquals(0.5385, v);
         } catch (Exception e) {
 
         }

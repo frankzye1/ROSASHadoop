@@ -4,15 +4,14 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.hive.ql.exec.UDAF;
 import org.apache.hadoop.hive.ql.exec.UDAFEvaluator;
-import sun.security.util.BigInt;
 
-import java.math.BigInteger;
+/**
+ * Created by Zhuang on 2015/7/28.
+ * LTE邻区漏定义分析
+ */
 
-//
-//MR过覆盖系数
-//
 
-public class MR_OverCoverageIndex_UDAF extends UDAF {
+public class LTE_AdjacentAreaLeakageDefinition_UDAF extends UDAF {
     public static class UDAFState {
         private int index = 0;
         private Long total = 0L;
@@ -20,7 +19,7 @@ public class MR_OverCoverageIndex_UDAF extends UDAF {
         private String op3 = "";
     }
 
-    static final Log LOG = LogFactory.getLog(MR_OverCoverageIndex_UDAF.class.getName());
+    static final Log LOG = LogFactory.getLog(LTE_AdjacentAreaLeakageDefinition_UDAF.class.getName());
 
     public static class Evaluator implements UDAFEvaluator {
 
@@ -55,8 +54,9 @@ public class MR_OverCoverageIndex_UDAF extends UDAF {
                     String op2 = operator2;
                     state.v3 = Double.parseDouble(value3);
                     state.op3 = operator3;
-                    boolean result1 = CommonFunction.compare(a, op1, v1);
-                    boolean result2 = CommonFunction.compare(b - a, op2, v2);
+
+                    boolean result1 = compare(a, op1, v1);
+                    boolean result2 = compare(b - a, op2, v2);
 
                     if (result1 && result2) {
                         state.index++;
@@ -66,12 +66,26 @@ public class MR_OverCoverageIndex_UDAF extends UDAF {
                 state.total = total;
             } catch (Exception e) {
                 LOG.error(e.toString());
-                //throw e;
+                throw e;
             }
             return true;
         }
 
-
+        private boolean compare(double temp1, String op, double temp2) {
+            if (op == "大于") {
+                return temp1 > temp2;
+            } else if (op == "小于") {
+                return temp1 < temp2;
+            } else if (op == "大于等于") {
+                return temp1 >= temp2;
+            } else if (op == "小于等于") {
+                return temp1 <= temp2;
+            } else if (op == "等于") {
+                return temp1 == temp2;
+            } else {
+                return false;
+            }
+        }
 
         public UDAFState terminatePartial() {
             LOG.info("go into terminatePartial");
@@ -95,15 +109,10 @@ public class MR_OverCoverageIndex_UDAF extends UDAF {
         public int terminate() {
             LOG.info("terminate");
             if (state.total != 0) {
-                try {
-                    if (CommonFunction.compare((state.index * 1.0 / state.total), state.op3, state.v3))
-                        return 1;
-                    else
-                        return 0;
-                }
-                catch (Exception e){
-                    return  0;
-                }
+                if (compare((state.index * 1.0 / state.total), state.op3, state.v3))
+                    return 1;
+                else
+                    return 0;
             } else
                 return 0;
         }

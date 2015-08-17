@@ -11,7 +11,7 @@ import org.apache.hadoop.hive.ql.exec.UDAFEvaluator;
 
 public class MR_DistrictUserDistribution_UDAF extends UDAF {
     public static class UDAFAvgPriceState {
-        private int rate = 0 ;
+        private int rate = 0;
         private int rateTotal = 0;
     }
 
@@ -43,7 +43,8 @@ public class MR_DistrictUserDistribution_UDAF extends UDAF {
                     int rate = 0;
                     try {
                         rate = Integer.parseInt(rates[i].replace("\"", ""));
-                    }catch(Exception e){}
+                    } catch (Exception e) {
+                    }
                     state.rate += rate * i * 1.0;
                     state.rateTotal += rate;
                 }
@@ -76,7 +77,7 @@ public class MR_DistrictUserDistribution_UDAF extends UDAF {
             LOG.info("state.rate:" + state.rate);
             LOG.info("state.rateTotal:" + state.rateTotal);
             if (state.rateTotal != 0) {
-                return Math.round((state.rate * 1.0 / (state.rateTotal)) * 100) * 1.0 / 100;
+                return Math.round((state.rate * 1.0 / (state.rateTotal)) * 10000) * 1.0 / 10000;
             } else
                 return 0;
         }
