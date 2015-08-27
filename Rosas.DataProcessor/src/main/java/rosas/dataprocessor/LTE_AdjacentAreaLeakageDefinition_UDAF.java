@@ -55,8 +55,8 @@ public class LTE_AdjacentAreaLeakageDefinition_UDAF extends UDAF {
                     state.v3 = Double.parseDouble(value3);
                     state.op3 = operator3;
 
-                    boolean result1 = compare(a, op1, v1);
-                    boolean result2 = compare(b - a, op2, v2);
+                    boolean result1 = CommonFunction.compare(a, op1, v1);
+                    boolean result2 = CommonFunction.compare(b - a, op2, v2);
 
                     if (result1 && result2) {
                         state.index++;
@@ -71,21 +71,6 @@ public class LTE_AdjacentAreaLeakageDefinition_UDAF extends UDAF {
             return true;
         }
 
-        private boolean compare(double temp1, String op, double temp2) {
-            if (op == "大于") {
-                return temp1 > temp2;
-            } else if (op == "小于") {
-                return temp1 < temp2;
-            } else if (op == "大于等于") {
-                return temp1 >= temp2;
-            } else if (op == "小于等于") {
-                return temp1 <= temp2;
-            } else if (op == "等于") {
-                return temp1 == temp2;
-            } else {
-                return false;
-            }
-        }
 
         public UDAFState terminatePartial() {
             LOG.info("go into terminatePartial");
@@ -109,7 +94,7 @@ public class LTE_AdjacentAreaLeakageDefinition_UDAF extends UDAF {
         public int terminate() {
             LOG.info("terminate");
             if (state.total != 0) {
-                if (compare((state.index * 1.0 / state.total), state.op3, state.v3))
+                if (CommonFunction.compare((state.index * 1.0 / state.total), state.op3, state.v3))
                     return 1;
                 else
                     return 0;

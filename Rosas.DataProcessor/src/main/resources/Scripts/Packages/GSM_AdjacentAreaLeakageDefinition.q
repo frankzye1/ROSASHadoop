@@ -1,7 +1,7 @@
 add jar .\Rosas.DataProcessor.jar;
 use rosas;
 --------------GSM_邻区漏定义分析--MR_INDEX_10-------------
-CREATE TEMPORARY FUNCTION ev1 as 'rosas.dataprocessor.GSM_AdjacentAreaLeakageDefinition_UDF';
+CREATE TEMPORARY FUNCTION ev1 as 'rosas.dataprocessor.Compare_UDF';
 CREATE TEMPORARY FUNCTION ev2 as 'rosas.dataprocessor.GSM_AdjacentAreaLeakageDefinition_UDAF';
 
 

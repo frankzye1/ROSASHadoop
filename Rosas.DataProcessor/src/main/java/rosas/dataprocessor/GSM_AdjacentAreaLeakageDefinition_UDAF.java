@@ -44,37 +44,23 @@ public class GSM_AdjacentAreaLeakageDefinition_UDAF  extends UDAF {
                 try {
                     double a = Double.parseDouble(p1);
                     double b = Double.parseDouble(v2);
-                    state.v3 = Double.parseDouble(v3);
-                    state.op3 = op3;
-                    state.total=total;
-                    if (compare(a, op2, b)) {
+
+                    if (CommonFunction.compare(a, op2, b)) {
                         state.index++;
                     }
                 } catch (Exception e) {
                 }
+                state.v3 = Double.parseDouble(v3);
+                state.op3 = op3;
                 state.total = total;
             } catch (Exception e) {
                 LOG.error(e.toString());
-                throw e;
+                //throw e;
             }
             return true;
         }
 
-        private boolean compare(double temp1, String op, double temp2) {
-            if (op == "大于") {
-                return temp1 > temp2;
-            } else if (op == "小于") {
-                return temp1 < temp2;
-            } else if (op == "大于等于") {
-                return temp1 >= temp2;
-            } else if (op == "小于等于") {
-                return temp1 <= temp2;
-            } else if (op == "等于") {
-                return temp1 == temp2;
-            } else {
-                return false;
-            }
-        }
+
 
         public UDAFState terminatePartial() {
             LOG.info("go into terminatePartial");
@@ -98,7 +84,7 @@ public class GSM_AdjacentAreaLeakageDefinition_UDAF  extends UDAF {
         public int terminate() {
             LOG.info("terminate");
             if (state.total != 0) {
-                if (compare((state.index * 1.0 / state.total), state.op3, state.v3))
+                if (CommonFunction.compare((state.index * 1.0 / state.total), state.op3, state.v3))
                     return 1;
                 else
                     return 0;

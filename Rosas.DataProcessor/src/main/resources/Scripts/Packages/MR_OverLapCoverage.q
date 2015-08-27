@@ -13,7 +13,6 @@ drop table t6_5_1;
 drop table t6_p1;
 drop table t6_p2;
 drop table t6_p3;
-drop table mr_index_6;
 
 
 CREATE TABLE T6_P1 AS
@@ -30,8 +29,7 @@ WHERE PARAM='OL_NBRNUM_THRES';
 
 
 CREATE TABLE T6_1 AS
-select DEF_MO1 as MO,substring(fileheader_starttime,0,10) as day
-,MR_LteNcEarfcn,MR_LteNcPci,MR_LteNcRSRP,MR_LteScRSRP,ev1(MR_LteScRSRP,op1,v1) as Flag1
+select DEF_MO1 as MO,substring(fileheader_starttime,0,10) as day,MR_LteNcEarfcn,MR_LteNcPci,MR_LteNcRSRP,MR_LteScRSRP,ev1(MR_LteScRSRP,op1,v1) as Flag1 
 from 
 T6_P1,MRO;
 
@@ -65,9 +63,23 @@ SELECT * FROM
 T6_2 t1 join T6_4 t2 on
 t1.MO=t2.MO1 and t1.day=t2.day3 join T6_3 t4 on t1.MO=t4.MO4 and t1.day=t4.day2;
 
-insert overwrite table mr_index_6
-select MO,day as TTIME,'AllDay' as THOUR,ev2(MR_LteNcRSRP,MR_LteScRSRP,op2,v2,YB_totle1,Flag3) as rate
+CREATE TABLE MR_INDEX_6 AS
+select MO,day,ev2(MR_LteNcRSRP,MR_LteScRSRP,op2,v2,YB_totle1,Flag3) as rate
 from
 T6_P2,T6_5_1
 GROUP BY MO,day;
+
+
+drop table T6_1;
+drop table T6_2;
+drop table T6_3;
+drop table T6_4;
+drop table T6_5;
+drop table t6_5_1;
+drop table t6_p1;
+drop table t6_p2;
+drop table t6_p3;
+
+
+
 
