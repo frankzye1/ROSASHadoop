@@ -6,6 +6,7 @@ import java.util.*;
 
 /**
  * Created by Zhuang on 2015/8/26.
+ * 波峰位置的确定算法
  */
 public class Interference_Type_5_UDF extends UDF {
     public String evaluate(String[] str) {

@@ -2,8 +2,11 @@ package rosas.dataprocessor;
 
 import org.apache.hadoop.hive.ql.exec.UDF;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Zhuang on 2015/8/26.
+ * ·½²î
  */
 public class Interference_Type_2_UDF extends UDF {
     public double evaluate(String[] str) {
@@ -28,7 +31,8 @@ public class Interference_Type_2_UDF extends UDF {
                     variance += temp * temp;
                 }
             }
-            return variance / effetiveNum;
+            double result=variance / effetiveNum;
+            return CommonFunction.ReservedDecimal(result);
         } catch (Exception e) {
             return 0;
         }

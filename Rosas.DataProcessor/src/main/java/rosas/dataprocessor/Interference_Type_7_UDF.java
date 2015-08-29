@@ -2,14 +2,10 @@ package rosas.dataprocessor;
 
 import org.apache.hadoop.hive.ql.exec.UDF;
 
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-
 /**
- * Created by Zhuang on 2015/8/26.
- * ÏßÐ±ÂÊÎªk
+ * Created by Zhuang on 2015/8/28.
  */
-public class Interference_Type_3_UDF extends UDF {
+public class Interference_Type_7_UDF extends UDF {
     public double evaluate(String[] str) {
         try {
             double a = 0;

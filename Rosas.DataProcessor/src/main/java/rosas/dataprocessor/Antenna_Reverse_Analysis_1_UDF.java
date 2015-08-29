@@ -12,7 +12,8 @@ public class Antenna_Reverse_Analysis_1_UDF extends UDF {
         try {
             double a = Double.parseDouble(DIR);
             double b = Double.parseDouble(MR_SECTOR_BEARING);
-            return (Math.abs(a - b) + 360) % 360;
+            double result=(Math.abs(a - b) + 360) % 360;
+            return CommonFunction.ReservedDecimal(result);
         } catch (Exception e) {
             return 0;
         }

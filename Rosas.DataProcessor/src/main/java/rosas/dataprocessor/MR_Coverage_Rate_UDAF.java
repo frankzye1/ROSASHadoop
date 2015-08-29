@@ -79,7 +79,7 @@ public class MR_Coverage_Rate_UDAF extends UDAF {
             LOG.info("state.rate:" + state.rate);
             LOG.info("state.rateTotal:" + state.rateTotal);
             if (state.rateTotal != 0) {
-                return Math.round((state.rate * 1.0 / (state.rateTotal)) * 10000) * 1.0 / 10000;
+                return CommonFunction.ReservedDecimal(state.rate * 100.0 / state.rateTotal);
             } else
                 return -1;
         }

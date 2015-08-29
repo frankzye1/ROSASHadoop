@@ -17,7 +17,7 @@ public class MR_DistrictUserDistribution_UDAFTEST {
         try {
             ave.iterate(rates);
             double v = ave.terminate();
-            Assert.assertEquals(1.0, v);
+            Assert.assertEquals(9.5, v);
         } catch (Exception e) {
 
         }

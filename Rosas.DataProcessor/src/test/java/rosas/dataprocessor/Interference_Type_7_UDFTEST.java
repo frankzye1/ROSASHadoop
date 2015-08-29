@@ -4,9 +4,9 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 /**
- * Created by Zhuang on 2015/8/26.
+ * Created by Zhuang on 2015/8/28.
  */
-public class Interference_Type_3_UDFTEST {
+public class Interference_Type_7_UDFTEST {
 
     Interference_Type_3_UDF ave;
     @Test

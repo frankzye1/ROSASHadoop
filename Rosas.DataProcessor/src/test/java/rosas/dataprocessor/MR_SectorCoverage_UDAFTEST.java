@@ -21,7 +21,7 @@ public class MR_SectorCoverage_UDAFTEST {
         try {
             ave.iterate(rates);
             double v = ave.terminate();
-            Assert.assertEquals(0.3333, v);
+            Assert.assertEquals(0.333333, v);
         } catch (Exception e) {
 
         }

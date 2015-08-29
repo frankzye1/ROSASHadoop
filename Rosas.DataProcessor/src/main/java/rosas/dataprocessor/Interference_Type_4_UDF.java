@@ -4,6 +4,7 @@ import org.apache.hadoop.hive.ql.exec.UDF;
 
 /**
  * Created by Zhuang on 2015/8/26.
+ * ?干扰最严重的PRB为position ，position是对干扰电平值排序后的最大值所对应的PRB序号
  */
 public class Interference_Type_4_UDF extends UDF {
     public int evaluate(String[] str) {

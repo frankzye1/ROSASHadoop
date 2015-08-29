@@ -1,5 +1,7 @@
 package rosas.dataprocessor;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -79,6 +81,32 @@ public class CommonFunction {
         return 0;
 
     }
+
+    public static double ReservedDecimal(double result)
+    {
+        DecimalFormat df=new DecimalFormat("#.######");
+        String returnStr=df.format(result);
+        if (returnStr.contains("E"))
+        {
+            BigDecimal bd=new BigDecimal(returnStr);
+            int index=bd.toPlainString().indexOf(".")+7;
+            if (index>bd.toPlainString().length())
+            {
+                index=bd.toPlainString().length();
+
+            }
+
+            returnStr= bd.toPlainString().substring(0,index);
+        }
+
+
+
+
+
+        return Double.parseDouble(returnStr);
+    }
+
+
 
 
 

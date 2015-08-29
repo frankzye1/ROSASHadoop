@@ -4,9 +4,9 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 /**
- * Created by Zhuang on 2015/8/26.
+ * Created by Zhuang on 2015/8/28.
  */
-public class Interference_Type_3_UDFTEST {
+public class Interference_Type_8_UDFTEST {
 
     Interference_Type_3_UDF ave;
     @Test
@@ -15,7 +15,7 @@ public class Interference_Type_3_UDFTEST {
         try {
             String[] row = new String[]{"1", "1", "1", "1", null, "1"};
             double a = ave.evaluate(row);
-            Assert.assertEquals(-0.002838, a);
+            Assert.assertEquals(-0.0028382838283828385, a);
         } catch (Exception e) {
         }
     }

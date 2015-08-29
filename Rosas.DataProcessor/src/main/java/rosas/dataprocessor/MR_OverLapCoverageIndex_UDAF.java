@@ -82,7 +82,7 @@ public class MR_OverLapCoverageIndex_UDAF extends UDAF {
             LOG.info("terminate");
             if (state.total != 0) {
                 try {
-                    return state.index * 1.0 / state.total;
+                    return CommonFunction.ReservedDecimal(state.index * 100.0 / state.total);
                 } catch (Exception e) {
                     return 0;
                 }
