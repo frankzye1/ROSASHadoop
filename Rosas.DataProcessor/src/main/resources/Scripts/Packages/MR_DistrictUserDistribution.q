@@ -1,13 +1,13 @@
 add jar .\Rosas.DataProcessor.jar;
 use rosas;
+
 -----------------小区分布---------------------
 CREATE TEMPORARY FUNCTION ev1 as 'rosas.dataprocessor.MR_DistrictUserDistribution_UDAF';
 
-DROP TABLE T4_1;
 CREATE TABLE T4_1 AS
-select *,substring(fileheader_starttime,0,10) as day,substring(fileheader_starttime,12,2) as hour
+select *,LPad(fileheader_starttime,10,'') as day,LPad(fileheader_starttime,13,'') as hour
 from
-MRS_MR_Tadv;
+MRS_MR_Tadv WHERE LPad(fileheader_starttime,10,'')='{select_date}';
 
 insert overwrite table MR_INDEX_4
 select DEF_MO1 as MO,day as TTIME,hour as THOUR,

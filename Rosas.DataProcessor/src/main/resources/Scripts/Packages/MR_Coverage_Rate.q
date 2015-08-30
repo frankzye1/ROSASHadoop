@@ -3,11 +3,10 @@ use rosas;
 -----------------MR¸²¸ÇÂÊ---------------------
 CREATE TEMPORARY FUNCTION ev1 as 'rosas.dataprocessor.MR_Coverage_Rate_UDAF';
 
-DROP TABLE T1_1;
 CREATE TABLE T1_1 AS
-SELECT *,substring(fileheader_starttime,0,10) as day,substring(fileheader_starttime,12,2) as hour
+SELECT *,LPad(fileheader_starttime,10,'') as day,LPad(fileheader_starttime,13,'') as hour
 from
-MRS_MR_RSRP;
+MRS_MR_RSRP where LPad(fileheader_starttime,10,'')='{select_date}';
 
 insert overwrite table MR_INDEX_1
 select DEF_MO1 as MO,day as TTIME,hour as THOUR,

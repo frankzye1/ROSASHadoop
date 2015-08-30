@@ -3,6 +3,12 @@ use rosas;
 CREATE TEMPORARY FUNCTION ev1 as 'rosas.dataprocessor.MR_OverCoverageIndex_UDAF';
 --------------¹ý¸²¸Ç---------------
 
+DROP TABLE TEMP_MRO;
+CREATE TABLE TEMP_MRO AS
+SELECT * FROM MRO WHERE substring(fileheader_starttime,0,10)='{select_date}';
+
+
+
 drop table T5_1;
 drop table T5_2;
 drop table T5_3;
@@ -27,27 +33,25 @@ WHERE PARAM='SR_SAMPLE_RATIO';
 
 
 CREATE TABLE T5_11 AS
-select substring(fileheader_starttime,0,10) as day,DEF_MO1 as MO,
-MR_LteNcEarfcn,MR_LteNcPci,MR_LteScRSRP,MR_LteNcRSRP,ev3(MR_LteScRSRP,v1,op1) as flag2
-from T5_P1,MRO;
+select *,ev3(MR_LteScRSRP,v1,op1) as flag2 from T5_P1,TEMP_MRO;
 
 CREATE TABLE T5_12 AS
-select * from T5_11 where flag2=1;
+select * from TEMP_MRO where flag2=1;
 
 CREATE TABLE T5_1 AS 
-select MO,day,COUNT(*) as totle
-from
-T5_12
-group by day,MO;
+select DEF_MO1 as MO,substring(fileheader_starttime,0,10) as day,
+COUNT(*) as totle from T5_12 group by DEF_MO1,substring(fileheader_starttime,0,10);
 
 CREATE TABLE T5_2 AS 
-select *,day as day1,MO as MO1 FROM T5_12;
+select *,substring(fileheader_starttime,0,10) as day1 FROM TEMP_MRO;
 
 CREATE TABLE T5_3 AS 
 select * from 
 T5_1 t1 join T5_2 t2
-on t1.MO=t2.MO1 and t2.day1=t1.day;
+on t1.MO=t2.DEF_MO1 and t2.day1=t1.day;
 
+
+drop table T5_4;
 CREATE TABLE T5_4 AS
 select day,MO,MR_LteNcEarfcn,MR_LteNcPci,
 ev1(MR_LteScRSRP,MR_LteNcRSRP,totle,v1,op1,v2,op2,v3,op3) as Flag
@@ -69,3 +73,6 @@ drop table T5_P2;
 drop table T5_P3;
 drop table T5_11;
 drop table T5_12;
+
+
+DROP TABLE TEMP_MRO;
