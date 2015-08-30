@@ -4,7 +4,7 @@ use rosas;
 CREATE TEMPORARY FUNCTION ev1 as 'rosas.dataprocessor.MR_Coverage_Rate_UDAF';
 
 CREATE TABLE T1_1 AS
-SELECT *,LPad(fileheader_starttime,10,'') as day,LPad(fileheader_starttime,13,'') as hour
+SELECT *,LPad(fileheader_starttime,10,'') as day,substring(fileheader_starttime,12,2) as hour
 from
 MRS_MR_RSRP where LPad(fileheader_starttime,10,'')='{select_date}';
 

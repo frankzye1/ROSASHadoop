@@ -5,7 +5,7 @@ use rosas;
 CREATE TEMPORARY FUNCTION ev1 as 'rosas.dataprocessor.MR_DistrictUserDistribution_UDAF';
 
 CREATE TABLE T4_1 AS
-select *,LPad(fileheader_starttime,10,'') as day,LPad(fileheader_starttime,13,'') as hour
+select *,LPad(fileheader_starttime,10,'') as day,substring(fileheader_starttime,12,2) as hour
 from
 MRS_MR_Tadv WHERE LPad(fileheader_starttime,10,'')='{select_date}';
 
