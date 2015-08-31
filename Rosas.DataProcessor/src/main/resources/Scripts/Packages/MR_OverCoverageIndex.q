@@ -1,6 +1,7 @@
 add jar .\Rosas.DataProcessor.jar;
 use rosas;
 CREATE TEMPORARY FUNCTION ev1 as 'rosas.dataprocessor.MR_OverCoverageIndex_UDAF';
+CREATE TEMPORARY FUNCTION ev2 as 'rosas.dataprocessor.Compare_UDF';
 --------------¹ý¸²¸Ç---------------
 
 DROP TABLE TEMP_MRO;
@@ -33,10 +34,10 @@ WHERE PARAM='SR_SAMPLE_RATIO';
 
 
 CREATE TABLE T5_11 AS
-select *,ev3(MR_LteScRSRP,v1,op1) as flag2 from T5_P1,TEMP_MRO;
+select *,ev2(MR_LteScRSRP,op1,v1) as flag2 from T5_P1,TEMP_MRO;
 
 CREATE TABLE T5_12 AS
-select * from TEMP_MRO where flag2=1;
+select * from T5_11 where flag2=1;
 
 CREATE TABLE T5_1 AS 
 select DEF_MO1 as MO,substring(fileheader_starttime,0,10) as day,
