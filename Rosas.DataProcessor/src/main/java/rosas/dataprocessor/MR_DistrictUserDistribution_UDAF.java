@@ -50,7 +50,7 @@ public class MR_DistrictUserDistribution_UDAF extends UDAF {
                 }
             } catch (Exception e) {
                 LOG.error(e.toString());
-                throw e;
+                //throw e;
             }
             return true;
         }
