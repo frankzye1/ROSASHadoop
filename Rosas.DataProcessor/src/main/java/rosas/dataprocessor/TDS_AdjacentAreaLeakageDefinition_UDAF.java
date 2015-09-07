@@ -45,7 +45,7 @@ public class TDS_AdjacentAreaLeakageDefinition_UDAF extends UDAF {
                     double a = Double.parseDouble(MR_TdsPccpchRSCP);
                     double b = Double.parseDouble(v2);
 
-                    if (CommonFunction.compare(a, op2, b)) {
+                    if (Common.compare(a, op2, b)) {
                         state.index++;
                     }
                 } catch (Exception e) {
@@ -84,7 +84,7 @@ public class TDS_AdjacentAreaLeakageDefinition_UDAF extends UDAF {
         public int terminate() {
             LOG.info("terminate");
             if (state.total != 0) {
-                if (CommonFunction.compare((state.index * 1.0 / state.total), state.op3, state.v3))
+                if (Common.compare((state.index * 1.0 / state.total), state.op3, state.v3))
                     return 1;
                 else
                     return 0;

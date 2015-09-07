@@ -18,7 +18,7 @@ public class Average_Interference_Level_UDF extends UDF {
                 }
             }
             double avg=10*Math.log10(sum/effetiveNum);
-            return CommonFunction.ReservedDecimal(avg);
+            return Common.ReservedDecimal(avg);
         } catch (Exception e) {
             return 0;
         }

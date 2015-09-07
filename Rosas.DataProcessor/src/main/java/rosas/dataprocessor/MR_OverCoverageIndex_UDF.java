@@ -19,8 +19,8 @@ public class MR_OverCoverageIndex_UDF extends UDF {
 
         String Str = "";
 
-        boolean result1 = CommonFunction.compare(a, op1, v1);
-        boolean result2 = CommonFunction.compare(b - a, op2, v2);
+        boolean result1 = Common.compare(a, op1, v1);
+        boolean result2 = Common.compare(b - a, op2, v2);
         Str += "R1:" + result1 + "R2:" + result2;
 
         if (result1 && result2) {

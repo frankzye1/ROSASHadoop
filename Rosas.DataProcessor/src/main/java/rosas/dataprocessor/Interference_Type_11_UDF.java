@@ -2,26 +2,37 @@ package rosas.dataprocessor;
 
 import org.apache.hadoop.hive.ql.exec.UDF;
 
+import java.util.List;
+
 /**
  * Created by Zhuang on 2015/8/28.
  */
 public class Interference_Type_11_UDF extends UDF {
-    public double evaluate(String[] str) {
-        try {
-            double a = 0;
-            double b = 0;
-            for (int i = 0; i < str.length; i++) {
-                if (str[i] != null && str[i] != "") {
-                    double temp_prb_value=Double.parseDouble(str[i]);
-                    a+=i*temp_prb_value;
-                    b+=temp_prb_value;
-                }
-            }
-            double result=((100*a)-(4950*b))/8332500.0;
+    public int evaluate(int position,String left_max_right,String P6_V1,String P6_OP1,String P6_V2,String P6_OP2,String P6_LOGIC)
+    {
+        try
+        {
 
-            return result;
+            left_max_right=left_max_right.replace("[","").replace("]","");
+            String[] temp= left_max_right.split(",");
+            double left=Double.parseDouble(temp[0]);
+            double max=Double.parseDouble(temp[1]);
+            double right=Double.parseDouble(temp[2]);
+            double avg=(left+max+right)/3;
+            double variance=(((left-avg)*(left-avg))+((max-avg)*(max-avg))+((right-avg)*(right-avg)))/3;
+
+            if ((variance>0.001)&&Common.LogicFun(Common.compare(position,P6_OP1,Double.parseDouble(P6_V1)),P6_LOGIC,Common.compare(position,P6_OP2,Double.parseDouble(P6_V2))))
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+
+
         } catch (Exception e) {
-            return 0;
+            return -1;
         }
     }
 }

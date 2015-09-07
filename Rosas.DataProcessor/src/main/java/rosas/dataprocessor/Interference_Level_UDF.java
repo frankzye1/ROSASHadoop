@@ -12,19 +12,19 @@ public class Interference_Level_UDF extends UDF {
             {
                 return "无干扰";
             }
-            else if (CommonFunction.LogicFun(CommonFunction.compare(IF_INDEX, p1_op1, Double.parseDouble(p1_v1)), p1_LOGIC, CommonFunction.compare(IF_INDEX, p1_op2, Double.parseDouble(p1_v2))))
+            else if (Common.LogicFun(Common.compare(IF_INDEX, p1_op1, Double.parseDouble(p1_v1)), p1_LOGIC, Common.compare(IF_INDEX, p1_op2, Double.parseDouble(p1_v2))))
             {
                 return "弱干扰";
             }
-            else if (CommonFunction.LogicFun(CommonFunction.compare(IF_INDEX, P2_op1, Double.parseDouble(P2_v1)), P2_LOGIC, CommonFunction.compare(IF_INDEX, P2_op2, Double.parseDouble(P2_v2))))
+            else if (Common.LogicFun(Common.compare(IF_INDEX, P2_op1, Double.parseDouble(P2_v1)), P2_LOGIC, Common.compare(IF_INDEX, P2_op2, Double.parseDouble(P2_v2))))
             {
                 return "一般干扰";
             }
-            else if (CommonFunction.LogicFun(CommonFunction.compare(IF_INDEX, P3_op1, Double.parseDouble(P3_v1)), P3_LOGIC, CommonFunction.compare(IF_INDEX, P3_op2, Double.parseDouble(P3_v2))))
+            else if (Common.LogicFun(Common.compare(IF_INDEX, P3_op1, Double.parseDouble(P3_v1)), P3_LOGIC, Common.compare(IF_INDEX, P3_op2, Double.parseDouble(P3_v2))))
             {
                 return "强干扰";
             }
-            else if (CommonFunction.compare(IF_INDEX,P4_op1,Double.parseDouble(P4_v1)))
+            else if (Common.compare(IF_INDEX, P4_op1, Double.parseDouble(P4_v1)))
             {
                 return "超强干扰";
             }

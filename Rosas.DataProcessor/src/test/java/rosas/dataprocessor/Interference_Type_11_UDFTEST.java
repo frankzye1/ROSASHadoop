@@ -8,14 +8,14 @@ import org.junit.Test;
  */
 public class Interference_Type_11_UDFTEST {
 
-    Interference_Type_3_UDF ave;
+    Interference_Type_11_UDF ave;
     @Test
     public void evaluatesExpression() {
-        ave = new Interference_Type_3_UDF();
+        ave = new Interference_Type_11_UDF();
         try {
-            String[] row = new String[]{"1", "1", "1", "1", null, "1"};
-            double a = ave.evaluate(row);
-            Assert.assertEquals(-0.0028382838283828385, a);
+
+            int a = ave.evaluate(48,"[-118.678403,-117.127443,-117.180142]","47","GE","52","LE","and");
+            Assert.assertEquals(1, a);
         } catch (Exception e) {
         }
     }

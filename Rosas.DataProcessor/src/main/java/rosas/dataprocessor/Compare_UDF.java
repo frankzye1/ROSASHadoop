@@ -11,7 +11,7 @@ public class Compare_UDF extends UDF {
             double a = Double.parseDouble(v_a);
             double b = Double.parseDouble(v_b);
             String op = operator;
-            if (CommonFunction.compare(a, op, b)) {
+            if (Common.compare(a, op, b)) {
                 return 1;
             } else {
                 return 0;

@@ -14,7 +14,7 @@ public class Level5_Interference_Rb_Numbers_UDF  extends UDF {
             for (int i = 0; i < str.length; i++) {
                 if (str[i] != null && str[i] != "") {
                     double tempValue=Double.parseDouble(str[i]);
-                    boolean b1=CommonFunction.compare(tempValue, op1, v1);
+                    boolean b1= Common.compare(tempValue, op1, v1);
                     if (b1)
                     {
                         accordNums++;

@@ -7,7 +7,9 @@ import java.util.List;
 /**
  * Created by Zhuang on 2015/8/6.
  */
-public class CommonFunction {
+public class Common {
+
+    //比较函数 输入(参数1,运算符,参数2)  返回 true or false
     public static boolean compare(double temp1, String op, double temp2) {
         switch (OPERATOR.toOPERATOR(op)) {
             case GT:
@@ -34,6 +36,7 @@ public class CommonFunction {
         }
     }
 
+    //与或函数  输入(参数1,"and"/"or",参数2)
     public static boolean LogicFun(boolean temp1, String logic, boolean temp2) {
         switch (LOGIC.toLOGIC(logic)) {
             case and:
@@ -68,7 +71,7 @@ public class CommonFunction {
         return  min_index;
     }
 
-
+    //获取value在list中的index
     public static int GetIndexFromList(List<Integer> list,int value)
     {
         for (int i=0;i<list.size();i++)
@@ -93,16 +96,9 @@ public class CommonFunction {
             if (index>bd.toPlainString().length())
             {
                 index=bd.toPlainString().length();
-
             }
-
             returnStr= bd.toPlainString().substring(0,index);
         }
-
-
-
-
-
         return Double.parseDouble(returnStr);
     }
 

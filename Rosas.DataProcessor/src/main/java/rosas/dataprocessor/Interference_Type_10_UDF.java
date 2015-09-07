@@ -6,22 +6,17 @@ import org.apache.hadoop.hive.ql.exec.UDF;
  * Created by Zhuang on 2015/8/28.
  */
 public class Interference_Type_10_UDF extends UDF {
-    public double evaluate(String[] str) {
+    public int evaluate(double slope_k, int position, String P5_V1, String P5_OP1, String P5_V2, String P5_OP2, String P5_LOGIC) {
         try {
-            double a = 0;
-            double b = 0;
-            for (int i = 0; i < str.length; i++) {
-                if (str[i] != null && str[i] != "") {
-                    double temp_prb_value=Double.parseDouble(str[i]);
-                    a+=i*temp_prb_value;
-                    b+=temp_prb_value;
-                }
-            }
-            double result=((100*a)-(4950*b))/8332500.0;
+            if (Common.LogicFun(Common.compare(position, P5_OP1, Double.parseDouble(P5_V1)), P5_LOGIC,
+                    Common.compare(position, P5_OP2, Double.parseDouble(P5_V2))) && (slope_k > -0.1)) {
+                return 1;
 
-            return result;
+            } else {
+                return 0;
+            }
         } catch (Exception e) {
-            return 0;
+            return -1;
         }
     }
 }

@@ -77,7 +77,7 @@ public class MR_SectorCoverage_UDAF extends UDAF {
             LOG.info("state.rate:" + state.rate);
             LOG.info("state.rateTotal:" + state.rateTotal);
             if (state.rateTotal != 0) {
-                return CommonFunction.ReservedDecimal(state.rate * 1.0 / (state.rateTotal * 5));
+                return Common.ReservedDecimal(state.rate * 1.0 / (state.rateTotal * 5));
             } else
                 return 0;
         }

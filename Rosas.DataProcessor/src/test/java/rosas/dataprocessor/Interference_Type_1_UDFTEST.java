@@ -3,8 +3,6 @@ package rosas.dataprocessor;
 import junit.framework.Assert;
 import org.junit.Test;
 
-import java.text.DecimalFormat;
-
 /**
  * Created by Zhuang on 2015/8/26.
  */
@@ -19,7 +17,7 @@ public class Interference_Type_1_UDFTEST {
             double a = ave.evaluate(row);
             double result=236.0/23.0;
 
-            Assert.assertEquals(CommonFunction.ReservedDecimal(result), a);
+            Assert.assertEquals(Common.ReservedDecimal(result), a);
         } catch (Exception e) {
         }
     }

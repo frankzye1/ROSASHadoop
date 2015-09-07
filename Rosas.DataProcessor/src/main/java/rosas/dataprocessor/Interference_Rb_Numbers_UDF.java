@@ -12,7 +12,7 @@ public class Interference_Rb_Numbers_UDF extends UDF {
             int accordNums = 0;
             for (int i = 0; i < str.length; i++) {
                 if (str[i] != null && str[i] != "") {
-                    if (CommonFunction.compare(Double.parseDouble(str[i]), op1, v1))
+                    if (Common.compare(Double.parseDouble(str[i]), op1, v1))
                     {
                         accordNums++;
                     }

@@ -47,7 +47,7 @@ public class MR_OverLapCoverageIndex_UDAF extends UDAF {
                     String op = operator;
                     double v = Double.parseDouble(value);
 
-                    if (CommonFunction.compare(LteNcRSRP - LteScRSRP, op, v)) {
+                    if (Common.compare(LteNcRSRP - LteScRSRP, op, v)) {
                         state.index++;
                     }
                 } catch (Exception e) {
@@ -82,7 +82,7 @@ public class MR_OverLapCoverageIndex_UDAF extends UDAF {
             LOG.info("terminate");
             if (state.total != 0) {
                 try {
-                    return CommonFunction.ReservedDecimal(state.index * 100.0 / state.total);
+                    return Common.ReservedDecimal(state.index * 100.0 / state.total);
                 } catch (Exception e) {
                     return 0;
                 }

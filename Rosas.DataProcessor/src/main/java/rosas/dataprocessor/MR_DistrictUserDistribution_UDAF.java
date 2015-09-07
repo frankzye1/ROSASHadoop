@@ -77,7 +77,7 @@ public class MR_DistrictUserDistribution_UDAF extends UDAF {
             LOG.info("state.rate:" + state.rate);
             LOG.info("state.rateTotal:" + state.rateTotal);
             if (state.rateTotal != 0) {
-                return CommonFunction.ReservedDecimal(state.rate * 1.0 / (state.rateTotal));
+                return Common.ReservedDecimal(state.rate * 1.0 / (state.rateTotal));
             } else
                 return 0;
         }
