@@ -11,7 +11,7 @@ public class Common {
 
     //比较函数 输入(参数1,运算符,参数2)  返回 true or false
     public static boolean compare(double temp1, String op, double temp2) {
-        switch (OPERATOR.toOPERATOR(op)) {
+        switch (OPERATOR.toOPERATOR(op.toUpperCase())) {
             case GT:
                 return temp1 > temp2;
             case LT:
@@ -38,7 +38,7 @@ public class Common {
 
     //与或函数  输入(参数1,"and"/"or",参数2)
     public static boolean LogicFun(boolean temp1, String logic, boolean temp2) {
-        switch (LOGIC.toLOGIC(logic)) {
+        switch (LOGIC.toLOGIC(logic.toLowerCase())) {
             case and:
                 return temp1 && temp2;
             case or:
