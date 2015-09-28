@@ -33,7 +33,7 @@ FROM
 PM_EutranCellTdd where substring(fileheader_begintime,0,10)='{select_date}') t1 join SITE_INFO t2 on t1.CELLNAME=t2.DEF_CELLNAME;
 
 
---Е┬⌡Е╩╨Е▐┌Ф∙╟Д╦╢Ф≈╤Х║╗
+--╢╢╫╗╡нйЩаый╠╠М
 DROP TABLE IF_PARAM_TABLE_1;
 CREATE TABLE IF_PARAM_TABLE_1 AS
 SELECT VALUE1 AS P1_V1,OPERATOR1 AS P1_OP1 FROM 
@@ -86,63 +86,63 @@ PARAM_CONFIG WHERE PARAM='GPS_IF_PEAKLOCTH';
 
 
 
-----Е╝╫И╒▒Е╧╡Ф┴╟----
+----©Мф╣╦ихе----
 DROP TABLE IF_Type_Table_1;
 CREATE TABLE IF_Type_Table_1 AS
 SELECT 
 cellname,TTIME,THOUR,CITY,region,town,grid,def_cellname_chinese,
 ev7(variance,avg_if,P1_V1,P1_OP1,P2_V1,P2_OP1) as flag,
-concat('Ф√╧Е╥╝',variance,P1_OP1,P1_V1,'Д╦■Е╧ЁЕ²┤Е╧╡Ф┴╟Е─╪',avg_if,P2_OP1,P2_V1) as describe 
+concat('╥╫╡Н',variance,P1_OP1,P1_V1,'грф╫╬Ы╦ихеж╣',avg_if,P2_OP1,P2_V1) as describe 
 FROM 
 IF_PARAM_TABLE_1,IF_PARAM_TABLE_2,InterferenceType_1;
 
----Ф²┌Ф∙ёЕ╧╡Ф┴╟
+---тси╒╦ихе
 DROP TABLE IF_Type_Table_2;
 CREATE TABLE IF_Type_Table_2 AS
 SELECT
 cellname,TTIME,THOUR,CITY,region,town,grid,def_cellname_chinese,
 ev8(slope_k,P3_OP1,P3_V1) as flag,
-concat('Ф√°Г▌┤',slope_k,P3_OP1,P3_V1) as describe
+concat('п╠бй',slope_k,P3_OP1,P3_V1) as describe
 FROM
 IF_PARAM_TABLE_3,InterferenceType_1;
 
----Е┘╤Д╩√Е╧╡Ф┴╟
+---фДкШ╦ихе
 DROP TABLE IF_Type_Table_3;
 CREATE TABLE IF_Type_Table_3 AS
 SELECT
 cellname,TTIME,THOUR,CITY,region,town,grid,def_cellname_chinese,
 ev8(slope_k,P4_OP1,P4_V1) as flag,
-concat('Ф√°Г▌┤',slope_k,P4_OP1,P4_V1) as describe
+concat('п╠бй',slope_k,P4_OP1,P4_V1) as describe
 FROM
 IF_PARAM_TABLE_4,InterferenceType_1;
 
-------И≤╩Е║·Е╧╡Ф┴╟---
+------вХхШ╦ихе---
 DROP TABLE IF_Type_Table_4;
 CREATE TABLE IF_Type_Table_4 AS 
 SELECT 
 cellname,TTIME,THOUR,CITY,region,town,grid,def_cellname_chinese,
 ev10(slope_k,position,P5_V1,P5_OP1,P5_V2,P5_OP2,P5_LOGIC) as flag,
-concat("PRB",position,P5_OP1,P5_V1,P5_LOGIC,position,P5_OP2,P5_V2,"Е╧╤Д╦■Ф√°Г▌┤",slope_k,"Е╓╖Д╨▌-0.1") as describe 
+concat("PRB",position,P5_OP1,P5_V1,P5_LOGIC,position,P5_OP2,P5_V2,"╡╒грп╠бй",slope_k,"╢Ссз-0.1") as describe 
 FROM 
 IF_PARAM_TABLE_5,InterferenceType_1;
 
----Е░▄И╒▒Е╧╡Ф┴╟
+---м╛ф╣╦ихе
 DROP TABLE IF_Type_Table_5;
 CREATE TABLE IF_Type_Table_5 AS
 SELECT
 cellname,TTIME,THOUR,CITY,region,town,grid,def_cellname_chinese,
 ev11(position,left_max_right,P6_V1,P6_OP1,P6_V2,P6_OP2,P6_LOGIC) as flag,
-concat('PRB',position,P6_OP1,P6_V1,P6_LOGIC,'PRB',position,P6_OP2,P6_V2,'Д╦■PRB',position+1,'Ф┬√Х─┘PRB',position-1,'Е╞╧Е╨■Г └Е╧╡Ф┴╟Г■╣Е╧ЁЕ─╪Е▓▄PRB',position,'Е╞╧Е╨■Г └Е╧╡Ф┴╟Г■╣Е╧ЁЕ─╪Ф√╧Е╥╝Е╟▐Д╨▌0.001') as describe
+concat('PRB',position,P6_OP1,P6_V1,P6_LOGIC,'PRB',position,P6_OP2,P6_V2,'грPRB',position+1,'╩РуъPRB',position-1,'╤тс╕╣д╦ихе╣Гф╫ж╣╨мPRB',position,'╤тс╕╣д╦ихе╣Гф╫ж╣╥╫╡Нп║сз0.001') as describe
 FROM
 IF_PARAM_TABLE_6,InterferenceType_1;
 
----GPSЕ╧╡Ф┴╟  /  Д╨▓Х╟┐Е╧╡Ф┴╟
+---GPS╦ихе  /  ╩╔╣В╦ихе
 DROP TABLE IF_Type_Table_6;
 CREATE TABLE IF_Type_Table_6 AS
 SELECT
 cellname,TTIME,THOUR,CITY,region,town,grid,def_cellname_chinese,
 ev12(peak_position,P7_V1,P7_OP1,P8_V1,P8_OP1,P9_V1,P9_OP1,P10_V1,P10_OP1,P10_V2,P10_OP2,P10_LOGIC) as flag,
-concat('ФЁ╒ЕЁ╟',peak_position,' Х▀╔Ф┴╬Е┤╨Г └ФЁ╒ЕЁ╟Д╦╙Ф∙╟N',P7_OP1,P7_V1,"Е╧╤Д╦■Е┴█Е⌡⌡Д╦╙ФЁ╒ЕЁ╟Д╦╜Х┤ЁЕ╟▒Ф°┴Д╦╓Д╦╙ФЁ╒ЕЁ╟Д╫█Г╫╝PФ╩║Х╤ЁГ╜┴Д╨▌Б─≤Е▐┌Ф∙╟8Б─≥Д╦■Е°╗Б─≤Е▐┌Ф∙╟10Б─≥Е▄╨И≈╢Ф┬√Х─┘Г╜┴Д╨▌Б─≤Е▐┌Ф∙╟9Б─≥Д╦■Е°╗Б─≤Е▐┌Ф∙╟10Б─≥Е▄╨И≈╢О╪▄Е┬≥Е╧╡Ф┴╟Д╦╨GPSЕ╧╡Ф┴╟О╪▄Е░╕Е┬≥О╪▄Е╧╡Ф┴╟Д╦╨Д╨▓Х╟┐Е╧╡Ф┴╟Ц─┌") as describe
+concat('╡╗╥Е',peak_position,' хТурЁЖ╣д╡╗╥Е╦ЖйЩN',P7_OP1,P7_V1,"╡╒грг╟кд╦Ж╡╗╥Ежпжаиыспа╫╦Ж╡╗╥Ен╩жцPбЗвЦ╣хсз║╝╡нйЩ8║╞гртз║╝╡нйЩ10║╞гЬ╪Д╩Руъ╣хсз║╝╡нйЩ9║╞гртз║╝╡нйЩ10║╞гЬ╪Дё╛тР╦ихен╙GPS╦ихеё╛╥ЯтРё╛╦ихен╙╩╔╣В╦ихе║ё") as describe
 FROM
 IF_PARAM_TABLE_7,IF_PARAM_TABLE_8,IF_PARAM_TABLE_9,IF_PARAM_TABLE_10,InterferenceType_1;
 
@@ -150,51 +150,51 @@ IF_PARAM_TABLE_7,IF_PARAM_TABLE_8,IF_PARAM_TABLE_9,IF_PARAM_TABLE_10,Interferenc
 DROP TABLE PROPERTIES_DB_3;
 
 CREATE TABLE PROPERTIES_DB_3 AS
-SELECT cellname AS DEF_CELLNAME,'Е╧╡Ф┴╟' AS TYPE1,'Д╦┼Х║▄Е╧╡Ф┴╟' AS TYPE2,'Е╝╫И╒▒Е╧╡Ф┴╟' AS TYPE3,
+SELECT cellname AS DEF_CELLNAME,'╦ихе' AS TYPE1,'иопп╦ихе' AS TYPE2,'©Мф╣╦ихе' AS TYPE3,
 cellname AS FAULT_OBJECT,TTIME,CITY,region,town,grid,describe AS FAULT_DESCRIPTION,
-'Е▌÷Е⌡═' AS LABEL,THOUR,def_cellname_chinese
+'т╜рР' AS LABEL,THOUR,def_cellname_chinese
 FROM 
 IF_Type_Table_1 where flag=1;
 
 INSERT INTO TABLE PROPERTIES_DB_3
-SELECT cellname AS DEF_CELLNAME,'Е╧╡Ф┴╟' AS TYPE1,'Д╦┼Х║▄Е╧╡Ф┴╟' AS TYPE2,'Ф²┌Ф∙ёЕ╧╡Ф┴╟' AS TYPE3,
+SELECT cellname AS DEF_CELLNAME,'╦ихе' AS TYPE1,'иопп╦ихе' AS TYPE2,'тси╒╦ихе' AS TYPE3,
 cellname AS FAULT_OBJECT,TTIME,CITY,region,town,grid,describe AS FAULT_DESCRIPTION,
-'Е▌÷Е⌡═' AS LABEL,THOUR,def_cellname_chinese
+'т╜рР' AS LABEL,THOUR,def_cellname_chinese
 FROM 
 IF_Type_Table_2 where flag=1;
 
 INSERT INTO TABLE PROPERTIES_DB_3
-SELECT cellname AS DEF_CELLNAME,'Е╧╡Ф┴╟' AS TYPE1,'Д╦┼Х║▄Е╧╡Ф┴╟' AS TYPE2,'Е┘╤Д╩√Е╧╡Ф┴╟' AS TYPE3,
+SELECT cellname AS DEF_CELLNAME,'╦ихе' AS TYPE1,'иопп╦ихе' AS TYPE2,'фДкШ╦ихе' AS TYPE3,
 cellname AS FAULT_OBJECT,TTIME,CITY,region,town,grid,describe AS FAULT_DESCRIPTION,
-'Е▌÷Е⌡═' AS LABEL,THOUR,def_cellname_chinese
+'т╜рР' AS LABEL,THOUR,def_cellname_chinese
 FROM 
 IF_Type_Table_3 where flag=1;
 
 INSERT INTO TABLE PROPERTIES_DB_3
-SELECT cellname AS DEF_CELLNAME,'Е╧╡Ф┴╟' AS TYPE1,'Д╦┼Х║▄Е╧╡Ф┴╟' AS TYPE2,'И≤╩Е║·Е╧╡Ф┴╟' AS TYPE3,
+SELECT cellname AS DEF_CELLNAME,'╦ихе' AS TYPE1,'иопп╦ихе' AS TYPE2,'вХхШ╦ихе' AS TYPE3,
 cellname AS FAULT_OBJECT,TTIME,CITY,region,town,grid,describe AS FAULT_DESCRIPTION,
-'Е▌÷Е⌡═' AS LABEL,THOUR,def_cellname_chinese
+'т╜рР' AS LABEL,THOUR,def_cellname_chinese
 FROM 
 IF_Type_Table_4 where flag=1;
 
 INSERT INTO TABLE PROPERTIES_DB_3
-SELECT cellname AS DEF_CELLNAME,'Е╧╡Ф┴╟' AS TYPE1,'Д╦┼Х║▄Е╧╡Ф┴╟' AS TYPE2,'Е░▄И╒▒Е╧╡Ф┴╟' AS TYPE3,
+SELECT cellname AS DEF_CELLNAME,'╦ихе' AS TYPE1,'иопп╦ихе' AS TYPE2,'м╛ф╣╦ихе' AS TYPE3,
 cellname AS FAULT_OBJECT,TTIME,CITY,region,town,grid,describe AS FAULT_DESCRIPTION,
-'Е▌÷Е⌡═' AS LABEL,THOUR,def_cellname_chinese
+'т╜рР' AS LABEL,THOUR,def_cellname_chinese
 FROM 
 IF_Type_Table_5 where flag=1;
 
 INSERT INTO TABLE PROPERTIES_DB_3
-SELECT cellname AS DEF_CELLNAME,'Е╧╡Ф┴╟' AS TYPE1,'Д╦┼Х║▄Е╧╡Ф┴╟' AS TYPE2,'GPSЕ╧╡Ф┴╟' AS TYPE3,
+SELECT cellname AS DEF_CELLNAME,'╦ихе' AS TYPE1,'иопп╦ихе' AS TYPE2,'GPS╦ихе' AS TYPE3,
 cellname AS FAULT_OBJECT,TTIME,CITY,region,town,grid,describe AS FAULT_DESCRIPTION,
-'Е▌÷Е⌡═' AS LABEL,THOUR,def_cellname_chinese
+'т╜рР' AS LABEL,THOUR,def_cellname_chinese
 FROM 
 IF_Type_Table_6 where flag=1;
 
 INSERT INTO TABLE PROPERTIES_DB_3
-SELECT cellname AS DEF_CELLNAME,'Е╧╡Ф┴╟' AS TYPE1,'Д╦┼Х║▄Е╧╡Ф┴╟' AS TYPE2,'Д╨▓Х╟┐Е╧╡Ф┴╟' AS TYPE3,
+SELECT cellname AS DEF_CELLNAME,'╦ихе' AS TYPE1,'иопп╦ихе' AS TYPE2,'╩╔╣В╦ихе' AS TYPE3,
 cellname AS FAULT_OBJECT,TTIME,CITY,region,town,grid,describe AS FAULT_DESCRIPTION,
-'Е▌÷Е⌡═' AS LABEL,THOUR,def_cellname_chinese
+'т╜рР' AS LABEL,THOUR,def_cellname_chinese
 FROM 
 IF_Type_Table_6 where flag=2;
 

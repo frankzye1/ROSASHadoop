@@ -115,7 +115,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6331471">
+            <state vertical-scroll-proportion="0.18063314">
               <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
               <folding />
             </state>
@@ -992,12 +992,12 @@
       <workItem from="1442799058195" duration="12672000" />
       <workItem from="1442893410503" duration="838000" />
       <workItem from="1443403634906" duration="796000" />
-      <workItem from="1443428649304" duration="395000" />
+      <workItem from="1443428649304" duration="560000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="432026000" />
+    <option name="totallyTimeSpent" value="432191000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1455,7 +1455,7 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6331471">
+        <state vertical-scroll-proportion="0.18063314">
           <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
           <folding />
         </state>
