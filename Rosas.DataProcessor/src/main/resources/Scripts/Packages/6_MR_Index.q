@@ -47,3 +47,4 @@ FROM
 MR_INDEX_TEMP t1 left outer join site_info t2 on
 t1.mo=t2.def_eci;
 
+DROP TABLE MR_INDEX_TEMP;

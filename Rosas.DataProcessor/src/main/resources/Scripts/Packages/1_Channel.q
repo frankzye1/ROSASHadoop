@@ -11,4 +11,4 @@ WHEN BANDINDICATOR=40 THEN 'E'
 ELSE BANDINDICATOR
 END AS BAND 
 FROM 
-NRM_EutranCellTdd;
+NRM_EutranCellTdd where substring(FILEHEADER_DATETIME,0,10)='{select_date}';

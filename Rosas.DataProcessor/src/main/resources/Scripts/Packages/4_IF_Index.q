@@ -1,0 +1,54 @@
+use rosas;
+INSERT OVERWRITE TABLE IF_INDEX
+select 
+t10.city,
+t10.def_vendor as def_vendorname,
+t10.def_cellname,
+t10.def_cellname_chinese,
+t1.ttime,
+t1.thour,
+cnt_period,
+cnt_if,
+t9.band,
+num_valid_rbs,
+ave_if_nl,
+max_if_nl,
+num_if_rbs,
+num_if_rbs_band1,
+num_if_rbs_band2,
+num_if_rbs_band3,
+num_if_rbs_band4,
+num_if_rbs_band5,
+if_index,
+if_level,
+'' as if_type,
+phy_ulmeannl_prb0,phy_ulmeannl_prb1,phy_ulmeannl_prb2,phy_ulmeannl_prb3,phy_ulmeannl_prb4,phy_ulmeannl_prb5,phy_ulmeannl_prb6,phy_ulmeannl_prb7,phy_ulmeannl_prb8,phy_ulmeannl_prb9,phy_ulmeannl_prb10,phy_ulmeannl_prb11,phy_ulmeannl_prb12,phy_ulmeannl_prb13,phy_ulmeannl_prb14,phy_ulmeannl_prb15,phy_ulmeannl_prb16,phy_ulmeannl_prb17,phy_ulmeannl_prb18,phy_ulmeannl_prb19,phy_ulmeannl_prb20,phy_ulmeannl_prb21,phy_ulmeannl_prb22,phy_ulmeannl_prb23,phy_ulmeannl_prb24,phy_ulmeannl_prb25,phy_ulmeannl_prb26,phy_ulmeannl_prb27,phy_ulmeannl_prb28,phy_ulmeannl_prb29,phy_ulmeannl_prb30,phy_ulmeannl_prb31,phy_ulmeannl_prb32,phy_ulmeannl_prb33,phy_ulmeannl_prb34,phy_ulmeannl_prb35,phy_ulmeannl_prb36,phy_ulmeannl_prb37,phy_ulmeannl_prb38,phy_ulmeannl_prb39,phy_ulmeannl_prb40,phy_ulmeannl_prb41,phy_ulmeannl_prb42,phy_ulmeannl_prb43,phy_ulmeannl_prb44,phy_ulmeannl_prb45,phy_ulmeannl_prb46,phy_ulmeannl_prb47,phy_ulmeannl_prb48,phy_ulmeannl_prb49,phy_ulmeannl_prb50,phy_ulmeannl_prb51,phy_ulmeannl_prb52,phy_ulmeannl_prb53,phy_ulmeannl_prb54,phy_ulmeannl_prb55,phy_ulmeannl_prb56,phy_ulmeannl_prb57,phy_ulmeannl_prb58,phy_ulmeannl_prb59,phy_ulmeannl_prb60,phy_ulmeannl_prb61,phy_ulmeannl_prb62,phy_ulmeannl_prb63,phy_ulmeannl_prb64,phy_ulmeannl_prb65,phy_ulmeannl_prb66,phy_ulmeannl_prb67,phy_ulmeannl_prb68,phy_ulmeannl_prb69,phy_ulmeannl_prb70,phy_ulmeannl_prb71,phy_ulmeannl_prb72,phy_ulmeannl_prb73,phy_ulmeannl_prb74,phy_ulmeannl_prb75,phy_ulmeannl_prb76,phy_ulmeannl_prb77,phy_ulmeannl_prb78,phy_ulmeannl_prb79,phy_ulmeannl_prb80,phy_ulmeannl_prb81,phy_ulmeannl_prb82,phy_ulmeannl_prb83,phy_ulmeannl_prb84,phy_ulmeannl_prb85,phy_ulmeannl_prb86,phy_ulmeannl_prb87,phy_ulmeannl_prb88,phy_ulmeannl_prb89,phy_ulmeannl_prb90,phy_ulmeannl_prb91,phy_ulmeannl_prb92,phy_ulmeannl_prb93,phy_ulmeannl_prb94,phy_ulmeannl_prb95,phy_ulmeannl_prb96,phy_ulmeannl_prb97,phy_ulmeannl_prb98,phy_ulmeannl_prb99,
+phy_ulmaxnl_prb0,phy_ulmaxnl_prb1,phy_ulmaxnl_prb2,phy_ulmaxnl_prb3,phy_ulmaxnl_prb4,phy_ulmaxnl_prb5,phy_ulmaxnl_prb6,phy_ulmaxnl_prb7,phy_ulmaxnl_prb8,phy_ulmaxnl_prb9,phy_ulmaxnl_prb10,phy_ulmaxnl_prb11,phy_ulmaxnl_prb12,phy_ulmaxnl_prb13,phy_ulmaxnl_prb14,phy_ulmaxnl_prb15,phy_ulmaxnl_prb16,phy_ulmaxnl_prb17,phy_ulmaxnl_prb18,phy_ulmaxnl_prb19,phy_ulmaxnl_prb20,phy_ulmaxnl_prb21,phy_ulmaxnl_prb22,phy_ulmaxnl_prb23,phy_ulmaxnl_prb24,phy_ulmaxnl_prb25,phy_ulmaxnl_prb26,phy_ulmaxnl_prb27,phy_ulmaxnl_prb28,phy_ulmaxnl_prb29,phy_ulmaxnl_prb30,phy_ulmaxnl_prb31,phy_ulmaxnl_prb32,phy_ulmaxnl_prb33,phy_ulmaxnl_prb34,phy_ulmaxnl_prb35,phy_ulmaxnl_prb36,phy_ulmaxnl_prb37,phy_ulmaxnl_prb38,phy_ulmaxnl_prb39,phy_ulmaxnl_prb40,phy_ulmaxnl_prb41,phy_ulmaxnl_prb42,phy_ulmaxnl_prb43,phy_ulmaxnl_prb44,phy_ulmaxnl_prb45,phy_ulmaxnl_prb46,phy_ulmaxnl_prb47,phy_ulmaxnl_prb48,phy_ulmaxnl_prb49,phy_ulmaxnl_prb50,phy_ulmaxnl_prb51,phy_ulmaxnl_prb52,phy_ulmaxnl_prb53,phy_ulmaxnl_prb54,phy_ulmaxnl_prb55,phy_ulmaxnl_prb56,phy_ulmaxnl_prb57,phy_ulmaxnl_prb58,phy_ulmaxnl_prb59,phy_ulmaxnl_prb60,phy_ulmaxnl_prb61,phy_ulmaxnl_prb62,phy_ulmaxnl_prb63,phy_ulmaxnl_prb64,phy_ulmaxnl_prb65,phy_ulmaxnl_prb66,phy_ulmaxnl_prb67,phy_ulmaxnl_prb68,phy_ulmaxnl_prb69,phy_ulmaxnl_prb70,phy_ulmaxnl_prb71,phy_ulmaxnl_prb72,phy_ulmaxnl_prb73,phy_ulmaxnl_prb74,phy_ulmaxnl_prb75,phy_ulmaxnl_prb76,phy_ulmaxnl_prb77,phy_ulmaxnl_prb78,phy_ulmaxnl_prb79,phy_ulmaxnl_prb80,phy_ulmaxnl_prb81,phy_ulmaxnl_prb82,phy_ulmaxnl_prb83,phy_ulmaxnl_prb84,phy_ulmaxnl_prb85,phy_ulmaxnl_prb86,phy_ulmaxnl_prb87,phy_ulmaxnl_prb88,phy_ulmaxnl_prb89,phy_ulmaxnl_prb90,phy_ulmaxnl_prb91,phy_ulmaxnl_prb92,phy_ulmaxnl_prb93,phy_ulmaxnl_prb94,phy_ulmaxnl_prb95,phy_ulmaxnl_prb96,phy_ulmaxnl_prb97,phy_ulmaxnl_prb98,phy_ulmaxnl_prb99
+from 
+if_index_4 t1 
+join if_index_5 t2 
+on t1.def_cellname=t2.def_cellname and t1.ttime=t2.ttime and t1.thour=t2.thour 
+join
+if_index_6 t3 
+on t1.def_cellname=t3.def_cellname and t1.ttime=t3.ttime and t1.thour=t3.thour
+join
+if_index_8 t4 
+on t1.def_cellname=t4.def_cellname and t1.ttime=t4.ttime and t1.thour=t4.thour
+join
+IF_INDEX_LV12345_Rb_Numbers t5 
+on t1.def_cellname=t5.def_cellname and t1.ttime=t5.ttime and t1.thour=t5.thour
+join
+if_index_15 t6 
+on t1.def_cellname=t6.def_cellname and t1.ttime=t6.ttime and t1.thour=t6.thour
+join
+if_index_16 t7
+on t1.def_cellname=t7.def_cellname and t1.ttime=t7.ttime and t1.thour=t7.thour
+left outer join
+PM_EutranCellTdd t8
+on t1.def_cellname=t8.def_cellname and t1.ttime=substring(t8.fileheader_begintime,0,10) and t1.thour=substring(t8.fileheader_begintime,12,2)
+left outer join
+if_index_3 t9
+on t1.def_cellname=t9.def_cellname and t1.ttime=t9.ttime and t1.thour=t2.thour 
+left outer join 
+site_info t10
+on t1.def_cellname=t10.def_cellname;

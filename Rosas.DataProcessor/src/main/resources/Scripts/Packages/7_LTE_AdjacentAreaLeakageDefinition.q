@@ -17,6 +17,12 @@ drop table T8_P1;
 drop table T8_P2;
 drop table T8_P3;
 
+DROP TABLE T8_0;
+CREATE TABLE T8_0 AS
+SELECT * FROM MRO WHERE substring(fileheader_starttime,0,10)='{select_date}';
+
+
+
 -------算出每个主小区所有样本个数--------
 CREATE table T8_1 AS
 select * from 
@@ -54,7 +60,7 @@ CREATE TABLE T8_5 AS
 SELECT * FROM T8_3 T1 JOIN SITE_INFO T2 ON T1.NRM_DEF_CELLNAME=T2.DEF_CELLNAME;
 
 
--------插入结果
+-----插入结果
 CREATE TABLE T8_6 AS
 select * from
 T8_2 v1 left outer join T8_5 v2 on v1.T8_2_MO=v2.DEF_ECI and v1.MR_LteNcEarfcn=v2.NRM_EARFCN and v1.MR_LteNcPci=v2.NRM_PCI
@@ -65,8 +71,8 @@ CREATE TABLE T8_7 AS
 SELECT DEF_CELLNAME AS DEF_CELLNAME1,DEF_CELLNAME_CHINESE as DEF_CELLNAME_CHINESE1,CITY as CITY1,REGION AS REGION1,TOWN AS TOWN1,
 GRID AS GRID1,def_eci AS MO1 FROM SITE_INFO; 
 
-drop table MR_INDEX_8;
-CREATE TABLE MR_INDEX_8 AS
+drop table PROPERTIES_DB_2;
+CREATE TABLE PROPERTIES_DB_2 AS
 SELECT DEF_CELLNAME1 as DEF_CELLNAME,'参数' as TYPE1,'参数不合理' as TYPE2,
 '漏定义LTE邻区' as TYPE3,DEF_CELLNAME1 as FAULT_OBJECT,day as TTIME,
 CITY1 as CITY,REGION1 AS REGION,TOWN1 AS TOWN,GRID1 AS GRID,
@@ -75,7 +81,7 @@ concat('漏定义LTE邻区的EARFCN=',MR_LteNcEarfcn,',Pci=',MR_LteNcPci) AS FAULT_DES
 FROM T8_7 t1 join T8_6 t2 on t1.MO1=t2.t8_2_mo;
 
 
-
+DROP TABLE T8_0;
 drop table T8_1;
 drop table T8_2;
 drop table T8_3;

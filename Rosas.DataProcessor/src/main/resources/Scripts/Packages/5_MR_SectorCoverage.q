@@ -19,7 +19,7 @@ MR_AOA_40,MR_AOA_41,MR_AOA_42,MR_AOA_43,MR_AOA_44,MR_AOA_45,MR_AOA_46,MR_AOA_47,
 MR_AOA_48,MR_AOA_49,MR_AOA_50,MR_AOA_51,MR_AOA_52,MR_AOA_53,MR_AOA_54,MR_AOA_55,
 MR_AOA_56,MR_AOA_57,MR_AOA_58,MR_AOA_59,MR_AOA_60,MR_AOA_61,MR_AOA_62,MR_AOA_63,
 MR_AOA_64,MR_AOA_65,MR_AOA_66,MR_AOA_67,MR_AOA_68,MR_AOA_69,MR_AOA_70,MR_AOA_71) as MR_SECTOR_BEARING 
-	from TEMP_mrs_mr_aoa group by DEF_MO1,LPad(fileheader_starttime,10,''),substring(fileheader_starttime,12,2);
+	from mrs_mr_aoa group by DEF_MO1,LPad(fileheader_starttime,10,''),substring(fileheader_starttime,12,2);
 insert into table MR_INDEX_3 
 	select DEF_MO1,LPad(fileheader_starttime,10,''),
 	'AllDay',
@@ -32,6 +32,6 @@ MR_AOA_40,MR_AOA_41,MR_AOA_42,MR_AOA_43,MR_AOA_44,MR_AOA_45,MR_AOA_46,MR_AOA_47,
 MR_AOA_48,MR_AOA_49,MR_AOA_50,MR_AOA_51,MR_AOA_52,MR_AOA_53,MR_AOA_54,MR_AOA_55,
 MR_AOA_56,MR_AOA_57,MR_AOA_58,MR_AOA_59,MR_AOA_60,MR_AOA_61,MR_AOA_62,MR_AOA_63,
 MR_AOA_64,MR_AOA_65,MR_AOA_66,MR_AOA_67,MR_AOA_68,MR_AOA_69,MR_AOA_70,MR_AOA_71) as MR_SECTOR_BEARING 
-	from TEMP_mrs_mr_aoa group by DEF_MO1,LPad(fileheader_starttime,10,'');
+	from mrs_mr_aoa group by DEF_MO1,LPad(fileheader_starttime,10,'');
 	
-DROP TABLE TEMP_mrs_mr_aoa;
+	DROP TABLE TEMP_mrs_mr_aoa;

@@ -8,8 +8,6 @@ DROP TABLE TEMP_MRO;
 CREATE TABLE TEMP_MRO AS
 SELECT * FROM MRO WHERE substring(fileheader_starttime,0,10)='{select_date}';
 
-
-
 drop table T5_1;
 drop table T5_2;
 drop table T5_3;
@@ -20,7 +18,7 @@ drop table T5_P3;
 drop table T5_11;
 drop table T5_12;
 
-
+---参数临时表
 CREATE TABLE T5_P1 AS
 SELECT value1 as v1,operator1 as op1 FROM PARAM_CONFIG
 WHERE PARAM='COV_THRES';
@@ -32,26 +30,27 @@ SELECT value1 as v3,operator1 as op3 FROM PARAM_CONFIG
 WHERE PARAM='SR_SAMPLE_RATIO';
 
 
-
+---符合条件1的数据
 CREATE TABLE T5_11 AS
-select *,ev2(MR_LteScRSRP,op1,v1) as flag2 from T5_P1,TEMP_MRO;
+select *,ev2(MR_LteScRSRP,op1,v1) as flag2 from T5_P1,MRO;
 
 CREATE TABLE T5_12 AS
 select * from T5_11 where flag2=1;
 
+---符合条件1的  主小区样本总数totle
 CREATE TABLE T5_1 AS 
 select DEF_MO1 as MO,substring(fileheader_starttime,0,10) as day,
 COUNT(*) as totle from T5_12 group by DEF_MO1,substring(fileheader_starttime,0,10);
 
 CREATE TABLE T5_2 AS 
-select *,substring(fileheader_starttime,0,10) as day1 FROM TEMP_MRO;
+select *,substring(fileheader_starttime,0,10) as day1 FROM MRO;
 
 CREATE TABLE T5_3 AS 
 select * from 
 T5_1 t1 join T5_2 t2
 on t1.MO=t2.DEF_MO1 and t2.day1=t1.day;
 
-
+---此处的totle为符合条件1的  主小区样本总数
 drop table T5_4;
 CREATE TABLE T5_4 AS
 select day,MO,MR_LteNcEarfcn,MR_LteNcPci,
@@ -74,6 +73,4 @@ drop table T5_P2;
 drop table T5_P3;
 drop table T5_11;
 drop table T5_12;
-
-
 DROP TABLE TEMP_MRO;

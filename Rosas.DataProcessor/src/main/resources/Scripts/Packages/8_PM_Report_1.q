@@ -68,7 +68,6 @@ ALTER TABLE temp_pm_4
 CHANGE COLUMN def_sitename_chinese SITE_INFO_def_sitename_chinese String;
 ALTER TABLE temp_pm_4 
 CHANGE COLUMN def_cellname_chinese SITE_INFO_def_cellname_chinese String;
-
 DROP TABLE TEMP_PM_EutranCellTdd;
 CREATE TABLE TEMP_PM_EutranCellTdd AS
 SELECT * FROM PM_EutranCellTdd WHERE substring(FILEHEADER_BEGINTIME,0,10)='{select_date}';
@@ -89,7 +88,7 @@ drop table temp_pm_1;
 drop table temp_pm_2;
 drop table temp_pm_3;
 drop table temp_pm_4;
-
+DROP TABLE TEMP_PM_EutranCellTdd;
 
 
 

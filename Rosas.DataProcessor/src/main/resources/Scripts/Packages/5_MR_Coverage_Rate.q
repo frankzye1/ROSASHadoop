@@ -3,6 +3,7 @@ use rosas;
 -----------------MR¸²¸ÇÂÊ---------------------
 CREATE TEMPORARY FUNCTION ev1 as 'rosas.dataprocessor.MR_Coverage_Rate_UDAF';
 
+DROP TABLE T1_1;
 CREATE TABLE T1_1 AS
 SELECT *,LPad(fileheader_starttime,10,'') as day,substring(fileheader_starttime,12,2) as hour
 from
