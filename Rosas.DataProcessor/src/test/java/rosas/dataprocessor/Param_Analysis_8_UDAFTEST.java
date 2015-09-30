@@ -4,16 +4,17 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 /**
- * Created by Zhuang on 2015/9/18.
+ * Created by Zhuang on 2015/9/29.
  */
-public class Param_Analysis_26_UDFTEST {
-    Param_Analysis_26_UDF ave;
+public class Param_Analysis_8_UDAFTEST {
+    Param_Analysis_8_UDAF.Evaluator ave;
 
     @Test
     public void evaluatesExpression() {
-        ave = new Param_Analysis_26_UDF();
+        ave = new Param_Analysis_8_UDAF.Evaluator();
         try {
-            int v = ave.evaluate("ZTE","AL08","NE","1","NE","0.8");
+            ave.iterate("a","a");
+            int v = ave.terminate();
             Assert.assertEquals(1, v);
         } catch (Exception e) {
 

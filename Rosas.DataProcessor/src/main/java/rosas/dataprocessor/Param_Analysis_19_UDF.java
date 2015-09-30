@@ -21,7 +21,7 @@ public class Param_Analysis_19_UDF extends UDF {
             }
             else if (Band==40)
             {
-                if (ANTENNAPORTSCOUNT!="AN1")
+                if (!ANTENNAPORTSCOUNT.contains("AN1"))
                 {
                     if (Common.compare(a, op1, b1)) {
                         return 1;
@@ -29,7 +29,7 @@ public class Param_Analysis_19_UDF extends UDF {
                         return 0;
                     }
                 }
-                else if (ANTENNAPORTSCOUNT=="AN1")
+                else if (ANTENNAPORTSCOUNT.contains("AN1"))
                 {
                     if (Common.compare(a, op2, b2)) {
                         return 1;
@@ -49,7 +49,7 @@ public class Param_Analysis_19_UDF extends UDF {
         }
         catch (Exception e)
         {
-            return  0;
+            return  -1;
         }
     }
 }

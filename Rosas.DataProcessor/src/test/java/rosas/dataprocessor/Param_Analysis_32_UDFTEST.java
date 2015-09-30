@@ -13,8 +13,8 @@ public class Param_Analysis_32_UDFTEST {
     public void evaluatesExpression() {
         ave = new Param_Analysis_32_UDF();
         try {
-            int v = ave.evaluate("INDOOR","4","5","6","ge","24","and","le","30","ge","24","and","le","30");
-            Assert.assertEquals(30, v);
+            int v = ave.evaluate("INDOOR","4","5","","ge","14","and","le","30","ge","14","and","le","30");
+            Assert.assertEquals(18, v);
         } catch (Exception e) {
 
         }

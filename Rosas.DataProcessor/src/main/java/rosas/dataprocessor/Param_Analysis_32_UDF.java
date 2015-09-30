@@ -13,6 +13,21 @@ public class Param_Analysis_32_UDF extends UDF
     {
         try
         {
+            if (SNONINTRASEARCH.length()<1)
+            {
+                SNONINTRASEARCH="0";
+            }
+            if (QRXLEVMIN.length()<1)
+            {
+                QRXLEVMIN="0";
+            }
+            if (QRXLEVMINOFFSET.length()<1)
+            {
+                QRXLEVMINOFFSET="0";
+            }
+
+
+
             double a=(Double.parseDouble(SNONINTRASEARCH)*2)+
                     (Double.parseDouble(QRXLEVMIN)*2)+
                     (Double.parseDouble(QRXLEVMINOFFSET)*2);

@@ -2,12 +2,18 @@ package rosas.dataprocessor;
 
 import org.apache.hadoop.hive.ql.exec.UDF;
 
+import java.util.regex.Pattern;
+
 /**
  * Created by Zhuang on 2015/9/17.
  */
 public class Param_Analysis_20_UDF extends UDF {
     public int evaluate(String PREAMBLEINITIALRTP,String op1, String v1,String Logic,String op2,String v2) {
         try {
+
+            PREAMBLEINITIALRTP=Pattern.compile("[^0-9]").matcher(PREAMBLEINITIALRTP).replaceAll("");
+            v1=Pattern.compile("[^0-9]").matcher(v1).replaceAll("");
+            v2=Pattern.compile("[^0-9]").matcher(v2).replaceAll("");
 
             double a = Double.parseDouble(PREAMBLEINITIALRTP);
             double b1 = Double.parseDouble(v1);
@@ -24,7 +30,7 @@ public class Param_Analysis_20_UDF extends UDF {
         }
         catch (Exception e)
         {
-            return  0;
+            return  -1;
         }
     }
 }

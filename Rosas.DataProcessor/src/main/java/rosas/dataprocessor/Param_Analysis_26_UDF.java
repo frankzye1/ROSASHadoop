@@ -14,7 +14,7 @@ public class Param_Analysis_26_UDF extends UDF
             double a=Double.parseDouble(ALPHA.substring(ALPHA.length() - 1));
             double b1 = Double.parseDouble(v1);
             double b2 = Double.parseDouble(v2);
-            if (ALPHA=="AL08")
+            if (ALPHA.contains("AL08"))
             {
                 a=0.8;
             }

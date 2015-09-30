@@ -38,7 +38,7 @@ public class Param_Analysis_17_UDF extends UDF {
         }
         catch (Exception e)
         {
-            return  0;
+            return  -1;
         }
     }
 }

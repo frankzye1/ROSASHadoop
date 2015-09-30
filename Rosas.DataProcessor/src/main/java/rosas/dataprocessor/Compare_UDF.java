@@ -8,6 +8,7 @@ import org.apache.hadoop.hive.ql.exec.UDF;
 public class Compare_UDF extends UDF {
     public int evaluate(String v_a, String operator, String v_b) {
         try {
+
             double a = Double.parseDouble(v_a);
             double b = Double.parseDouble(v_b);
             String op = operator;
@@ -19,7 +20,7 @@ public class Compare_UDF extends UDF {
         }
         catch (Exception e)
         {
-            return  0;
+            return  -1;
         }
     }
 }
