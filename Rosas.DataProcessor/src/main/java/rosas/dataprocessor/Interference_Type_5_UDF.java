@@ -37,9 +37,9 @@ public class Interference_Type_5_UDF extends UDF {
                 int left=0;
                 int right=0;
 
-                if (Common.GetIndexFromList(PRB_No, max_no)<= 3)
+                if (PRB_No.indexOf(max_no)<=3)
                 {
-                    left= max_no;
+                    left= PRB_No.get(0);
                 }
                 else
                 {
@@ -55,9 +55,9 @@ public class Interference_Type_5_UDF extends UDF {
                     left = max_no - i;
                 }
 
-                if(Common.GetIndexFromList(PRB_No, max_no)>=PRB_No.size()-3)
+                if(PRB_No.indexOf(max_no)>=PRB_No.size()-3)
                 {
-                    right=max_no;
+                    right=PRB_No.get(PRB_No.size()-1);
                 }
                 else
                 {
@@ -72,8 +72,8 @@ public class Interference_Type_5_UDF extends UDF {
                     }
                 }
 
-                int leftIndex= Common.GetIndexFromList(PRB_No, left);
-                int rightIndex= Common.GetIndexFromList(PRB_No, right)+1;
+                int leftIndex= PRB_No.indexOf(left);
+                int rightIndex= PRB_No.indexOf(right)+1;
                 List<Double> V1= V.subList(leftIndex, rightIndex);
                 List<Integer> PRB_No1= PRB_No.subList(leftIndex, rightIndex);
 

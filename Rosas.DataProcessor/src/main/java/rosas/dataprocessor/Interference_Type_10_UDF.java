@@ -9,7 +9,7 @@ public class Interference_Type_10_UDF extends UDF {
     public int evaluate(double slope_k, int position, String P5_V1, String P5_OP1, String P5_V2, String P5_OP2, String P5_LOGIC) {
         try {
             if (Common.LogicFun(Common.compare(position, P5_OP1, Double.parseDouble(P5_V1)), P5_LOGIC,
-                    Common.compare(position, P5_OP2, Double.parseDouble(P5_V2))) && (slope_k > -0.1)) {
+                    Common.compare(position, P5_OP2, Double.parseDouble(P5_V2))) && (slope_k > -0.05)) {
                 return 1;
 
             } else {
