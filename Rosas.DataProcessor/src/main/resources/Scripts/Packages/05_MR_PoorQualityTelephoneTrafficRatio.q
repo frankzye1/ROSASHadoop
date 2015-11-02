@@ -3,6 +3,7 @@ use rosas;
 -----------------MR质差话务比例---------------------
 CREATE TEMPORARY FUNCTION ev1 as 'rosas.dataprocessor.MR_PoorQualityTelephoneTrafficRatio_UDAF';
 
+DROP TABLE T2_1;
 CREATE TABLE T2_1 AS
 select *,LPad(fileheader_starttime,10,'') as day,substring(fileheader_starttime,12,2) as hour
 from

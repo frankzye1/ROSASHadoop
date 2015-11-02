@@ -1,0 +1,31 @@
+use rosas;
+
+DROP TABLE TEMP_PM_EutranRelationTdd;
+CREATE TABLE TEMP_PM_EutranRelationTdd AS
+SELECT *,substring(FILEHEADER_BEGINTIME,0,10) as date_time 
+FROM PM_EutranRelationTdd 
+WHERE 
+substring(FILEHEADER_BEGINTIME,0,10)='{select_date}';
+
+
+ALTER TABLE TEMP_PM_EutranRelationTdd 
+CHANGE COLUMN def_sitename_chinese PM_def_sitename_chinese String;
+ALTER TABLE TEMP_PM_EutranRelationTdd 
+CHANGE COLUMN def_cellname_chinese PM_INFO_def_cellname_chinese String;
+
+DROP TABLE TEMP_P1S1S2;
+CREATE TABLE TEMP_P1S1S2 AS
+SELECT p1.*,p1.DEF_CELLNAME as P1_DEF_CELLNAME,s1.CITY,s1.REGION,s1.TOWN,s1.GRID,s1.DEF_CELLNAME_CHINESE,s1.DEF_SITENAME_CHINESE,
+s2.DEF_CELLNAME as S2_DEF_CELLNAME 
+FROM
+TEMP_PM_EutranRelationTdd p1
+join 
+SITE_INFO s1
+on
+p1.DEF_CELLNAME=s1.DEF_CELLNAME
+join
+SITE_INFO s2
+on
+p1.XMLDN_EUTRANRELATIONTDD=s2.XMLDN_EUTRANRELATIONTDD;
+
+DROP TABLE TEMP_PM_EutranRelationTdd;

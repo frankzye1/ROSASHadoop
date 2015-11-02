@@ -14,7 +14,7 @@ public class Interference_Type_10_UDFTEST {
         ave = new Interference_Type_10_UDF();
         try {
             //String[] row = new String[]{"1", "1", "1", "1", null, "1"};
-            int a = ave.evaluate(11,1,"0.1","GE","10","LT","and");
+            int a = ave.evaluate(10,1,"ge","5",11,1,"0.1","GE","10","LT","and");
             Assert.assertEquals(1, a);
         } catch (Exception e) {
         }

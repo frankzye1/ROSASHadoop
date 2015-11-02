@@ -27,11 +27,11 @@ WHERE PARAM='OL_NBRNUM_THRES';
 
 
 
-
 CREATE TABLE T6_1 AS
 select DEF_MO1 as MO,substring(fileheader_starttime,0,10) as day,MR_LteNcEarfcn,MR_LteNcPci,MR_LteNcRSRP,MR_LteScRSRP,ev1(MR_LteScRSRP,op1,v1) as Flag1 
 from 
 T6_P1,MRO WHERE substring(fileheader_starttime,0,10)='{select_date}';
+
 
 -------符合条件1的样本T6_2-------------------------------
 CREATE TABLE T6_2 AS

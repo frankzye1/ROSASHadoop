@@ -1,8 +1,8 @@
 use rosas;
 
-DROP TABLE MR_INDEX_TEMP;
-CREATE TABLE MR_INDEX_TEMP AS
-select u1.*,MR_COV_RATE,MR_BADQUAL_RATE,MR_SECTOR_BEARING,MR_USER_DIS,MR_OVERCOV_INDEX,MR_OVERLAP_INDEX from 
+drop table MR_INDEX_TEMP_0;
+CREATE TABLE MR_INDEX_TEMP_0 as
+select mo,ttime,thour from 
 (SELECT mo,ttime,thour FROM MR_INDEX_1
 union all
 SELECT mo,ttime,thour FROM MR_INDEX_2
@@ -13,7 +13,14 @@ SELECT mo,ttime,thour FROM MR_INDEX_4
 union all
 SELECT mo,ttime,thour FROM MR_INDEX_5
 union all
-SELECT mo,ttime,thour FROM MR_INDEX_6) u1
+SELECT mo,ttime,thour FROM MR_INDEX_6) t1
+group by mo,ttime,thour;
+
+
+DROP TABLE MR_INDEX_TEMP;
+CREATE TABLE MR_INDEX_TEMP AS
+select u1.*,MR_COV_RATE,MR_BADQUAL_RATE,MR_SECTOR_BEARING,MR_USER_DIS,MR_OVERCOV_INDEX,MR_OVERLAP_INDEX from 
+MR_INDEX_TEMP_0 u1
 left outer join
 MR_INDEX_1 t1 
 on
@@ -48,3 +55,4 @@ MR_INDEX_TEMP t1 left outer join site_info t2 on
 t1.mo=t2.def_eci;
 
 DROP TABLE MR_INDEX_TEMP;
+drop table MR_INDEX_TEMP_0;

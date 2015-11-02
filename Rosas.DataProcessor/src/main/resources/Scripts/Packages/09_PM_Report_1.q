@@ -15,7 +15,8 @@ CREATE TABLE temp_pm_3 AS
 select * from temp_pm_2 t2,temp_pm_1 t1 WHERE t1.day=t2.maxday;
 
 -----更新PI_TEMP表的数据------
-insert overwrite table PI_TEMP 
+DROP table PI_TEMP;
+CREATE table PI_TEMP as
 select DEF_CELLNAME,
 CASE
 	WHEN BANDWIDTH=1.4 THEN 6 
@@ -70,7 +71,11 @@ ALTER TABLE temp_pm_4
 CHANGE COLUMN def_cellname_chinese SITE_INFO_def_cellname_chinese String;
 DROP TABLE TEMP_PM_EutranCellTdd;
 CREATE TABLE TEMP_PM_EutranCellTdd AS
-SELECT * FROM PM_EutranCellTdd WHERE substring(FILEHEADER_BEGINTIME,0,10)='{select_date}';
+SELECT *,
+substring(FILEHEADER_BEGINTIME,0,10) as date_time
+FROM PM_EutranCellTdd 
+WHERE 
+substring(FILEHEADER_BEGINTIME,0,10)='{select_date}';
 
 
 drop table temp_pm_5;
@@ -83,7 +88,7 @@ on t1.DEF_CELLNAME=t4.SITE_INFO_DEF_CELLNAME;
 ALTER TABLE PI_TEMP 
 CHANGE COLUMN PI_TEMP_DEF_CELLNAME DEF_CELLNAME String;
 
-
+drop table PI_TEMP;
 drop table temp_pm_1;
 drop table temp_pm_2;
 drop table temp_pm_3;

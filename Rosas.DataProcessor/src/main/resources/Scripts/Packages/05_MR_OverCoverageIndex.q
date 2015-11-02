@@ -42,13 +42,10 @@ CREATE TABLE T5_1 AS
 select DEF_MO1 as MO,substring(fileheader_starttime,0,10) as day,
 COUNT(*) as totle from T5_12 group by DEF_MO1,substring(fileheader_starttime,0,10);
 
-CREATE TABLE T5_2 AS 
-select *,substring(fileheader_starttime,0,10) as day1 FROM MRO;
-
 CREATE TABLE T5_3 AS 
 select * from 
-T5_1 t1 join T5_2 t2
-on t1.MO=t2.DEF_MO1 and t2.day1=t1.day;
+T5_1 t1 join MRO t2
+on t1.MO=t2.DEF_MO1 and substring(t2.fileheader_starttime,0,10)=t1.day;
 
 ---此处的totle为符合条件1的  主小区样本总数
 drop table T5_4;

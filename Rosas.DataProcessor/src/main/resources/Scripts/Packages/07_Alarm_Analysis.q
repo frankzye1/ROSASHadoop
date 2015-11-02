@@ -16,7 +16,7 @@ CREATE TABLE Alarm_Analysis_3 AS
 SELECT DEF_CELLNAME,'œ‘–‘π ’œ' as TYPE1,'' as TYPE2,TITLE as TYPE3,
 DN as FAULT_OBJECT,
 CITY,REGION,TOWN,GRID,
-regexp_replace(ttime,"/","-"),
+regexp_replace(ttime,"/","-") as ttime,
 STD_TITLE as FAULT_DESCRIPTION,
 '‘≠“Ú' as LABEL,'AllDay' as THOUR,DEF_CELLNAME_CHINESE
 FROM Alarm_Analysis_2 t1 join site_info t2 on t1.ALARM_NODE=t2.def_sitename_chinese;

@@ -6,7 +6,7 @@ import org.apache.hadoop.hive.ql.exec.UDF;
  * Created by Zhuang on 2015/9/7.
  */
 public class Interference_Type_12_UDF  extends UDF {
-    public int evaluate(String variance,String P11_OP1,String P11_V1,String P12_OP1,String P12_V1,
+    public int evaluate(double max_if_val,double avg_if,String P14_OP1, String P14_V1,String variance,String P11_OP1,String P11_V1,String P12_OP1,String P12_V1,
             String peak_position,String P7_V1,String P7_OP1,
                         String P8_V1,String P8_OP1,String P9_V1,String P9_OP1,
                         String P10_V1,String P10_OP1,String P10_V2,String P10_OP2,String P10_LOGIC)
@@ -25,6 +25,13 @@ public class Interference_Type_12_UDF  extends UDF {
                 boolean b3=false;
                 boolean b4=false;
                 boolean b5=false;
+
+
+                boolean b6=false;
+                if (Common.compare((max_if_val-avg_if),P14_OP1,Double.parseDouble(P14_V1)))
+                {
+                    b6=true;
+                }
 
                 if (Common.compare(positions.length, P12_OP1, Integer.parseInt(P12_V1)))
                 {
@@ -66,7 +73,7 @@ public class Interference_Type_12_UDF  extends UDF {
                 {
                     return 1;
                 }
-                else if (b4&&b5)
+                else if (b4&&b5&&b6)
                 {
                     return 2;
                 }
