@@ -31,6 +31,7 @@ public class Common {
 
     public enum OPERATOR {
         GT, LT, GE, LE, EQ, NE;
+
         public static OPERATOR toOPERATOR(String str) {
             return valueOf(str);
         }
@@ -50,34 +51,28 @@ public class Common {
 
     public enum LOGIC {
         and, or;
+
         public static LOGIC toLOGIC(String str) {
             return valueOf(str);
         }
     }
 
 
-
-    public static int GetMinIndexInDoubleList(List<Double> list)
-    {
-        int min_index=0;
-        for (int i=1;i<list.size();i++)
-        {
-            if (list.get(min_index)>list.get(i))
-            {
-                min_index=i;
+    public static int GetMinIndexInDoubleList(List<Double> list) {
+        int min_index = 0;
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(min_index) > list.get(i)) {
+                min_index = i;
             }
         }
 
-        return  min_index;
+        return min_index;
     }
 
     //获取value在list中的index
-    public static int GetIndexFromList(List<Integer> list,int value)
-    {
-        for (int i=0;i<list.size();i++)
-        {
-            if (value==list.get(i))
-            {
+    public static int GetIndexFromList(List<Integer> list, int value) {
+        for (int i = 0; i < list.size(); i++) {
+            if (value == list.get(i)) {
                 return i;
             }
         }
@@ -85,27 +80,24 @@ public class Common {
 
     }
 
-    public static double ReservedDecimal(double result)
-    {
-        DecimalFormat df=new DecimalFormat("#.######");
-        String returnStr=df.format(result);
-        if (returnStr.contains("E"))
-        {
-            BigDecimal bd=new BigDecimal(returnStr);
-            int index=bd.toPlainString().indexOf(".")+7;
-            if (index>bd.toPlainString().length())
-            {
-                index=bd.toPlainString().length();
+    public static double ReservedDecimal(double result) {
+        DecimalFormat df = new DecimalFormat("#.######");
+        String returnStr = df.format(result);
+        if (returnStr.contains("E")) {
+            BigDecimal bd = new BigDecimal(returnStr);
+            int index = bd.toPlainString().indexOf(".") + 7;
+            if (index > bd.toPlainString().length()) {
+                index = bd.toPlainString().length();
             }
-            returnStr= bd.toPlainString().substring(0,index);
+            returnStr = bd.toPlainString().substring(0, index);
         }
         return Double.parseDouble(returnStr);
     }
 
-
-
-
-
+    public static String[] StrToList(String Str) {
+        String[] Strlist = Str.replace("{", "").replace("}", "").replace("(", "").split("\\),");
+        return Strlist;
+    }
 }
 
 

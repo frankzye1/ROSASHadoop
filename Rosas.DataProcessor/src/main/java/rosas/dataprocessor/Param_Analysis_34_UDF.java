@@ -2,11 +2,12 @@ package rosas.dataprocessor;
 
 import org.apache.hadoop.hive.ql.exec.UDF;
 
+import java.util.ConcurrentModificationException;
+
 /**
- * Created by Zhuang on 2015/9/18.
+ * Created by Administrator on 2015/11/10.
  */
-public class Param_Analysis_35_UDF extends UDF
-{
+public class Param_Analysis_34_UDF extends UDF {
     public int evaluate(String Str1, String Str2, String Str3,
                         String op1, String v1, String LOGIC1, String op2, String v2) {
         try {
@@ -26,7 +27,7 @@ public class Param_Analysis_35_UDF extends UDF
 
 
                     if (Double.parseDouble(strlist_1[0]) == Double.parseDouble(strlist_2[0])) {
-                        double a = Double.parseDouble(strlist_1[1]) +
+                        double a = (Double.parseDouble(strlist_1[1]) * 2) +
                                 (Double.parseDouble(strlist_2[1]) * 2) +
                                 (Double.parseDouble(Str3) * 2);
                         double V1 = Double.parseDouble(v1);
