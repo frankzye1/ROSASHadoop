@@ -13,7 +13,7 @@ public class MR_Coverage_Rate_UDAFTEST {
     @Test
     public void evaluatesExpression() {
         ave = new MR_Coverage_Rate_UDAF.Evaluator();
-        String[] rates = new String[]{"abc", "0", "0", "0", "0", "0", "0", "2", "2", "2", "2", "2", "2"};
+        String[] rates = new String[]{"abc", "0", "1", "0", "0", "0", "0", "1", "2", "2", "2", "2", "2"};
         try {
             ave.iterate(rates);
             double v = ave.terminate();
