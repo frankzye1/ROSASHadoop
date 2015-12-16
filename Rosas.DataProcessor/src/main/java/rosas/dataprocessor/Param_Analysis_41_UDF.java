@@ -14,6 +14,14 @@ public class Param_Analysis_41_UDF extends UDF {
     public int evaluate(String ver, String str, String op1, String v1, String op2, String v2) {
         try {
 
+            if(ver==null || ver.equals("")|| ver.equals("null")||ver.equals("NULL"))
+            {
+                return 0;
+            }
+            if(str==null || str.equals("")|| str.equals("null")||str.equals("NULL"))
+            {
+                return 0;
+            }
             double V1 = Double.parseDouble(v1.toUpperCase().replace("PSF", ""));
             double V2 = Double.parseDouble(v2.toUpperCase().replace("PSF", ""));
             double a = 0;

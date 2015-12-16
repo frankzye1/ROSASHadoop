@@ -13,12 +13,10 @@ public class LTE_AdjacentAreaLeakageDefinition_UDAFTEST {
     public void evaluatesExpression() {
         ave = new LTE_AdjacentAreaLeakageDefinition_UDAF.Evaluator();
         try {
-            //String LteScRSRP, String LteNcRSRP,
-            //Long total, String value1, String operator1, String value2, String operator2,
-            //       String value3, String operator3
-            ave.iterate("1","1",50L,"0","´óÓÚ","0","µÈÓÚ","0.02","µÈÓÚ");
-            int v = ave.terminate();
-            Assert.assertEquals(1, v);
+
+            ave.iterate("1","2",50L,"0","ï¿½ï¿½ï¿½ï¿½","0","ï¿½ï¿½ï¿½ï¿½","0.02","ï¿½ï¿½ï¿½ï¿½");
+            double v = ave.terminate();
+            Assert.assertEquals(111, v);
         } catch (Exception e) {
 
         }

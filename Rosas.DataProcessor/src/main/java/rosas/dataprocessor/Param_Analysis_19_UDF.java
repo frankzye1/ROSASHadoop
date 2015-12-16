@@ -8,6 +8,18 @@ import org.apache.hadoop.hive.ql.exec.UDF;
 public class Param_Analysis_19_UDF extends UDF {
     public int evaluate(String BANDINDICATOR,String PB, String ANTENNAPORTSCOUNT,String op1, String v1,String op2,String v2) {
         try {
+            if(BANDINDICATOR==null || BANDINDICATOR.equals("")|| BANDINDICATOR.equals("null")||BANDINDICATOR.equals("NULL"))
+            {
+                return 0;
+            }
+            if(PB==null || PB.equals("")|| PB.equals("null")||PB.equals("NULL"))
+            {
+                return 0;
+            }
+            if(ANTENNAPORTSCOUNT==null || ANTENNAPORTSCOUNT.equals("")|| ANTENNAPORTSCOUNT.equals("null")||ANTENNAPORTSCOUNT.equals("NULL"))
+            {
+                return 0;
+            }
             Integer Band=Integer.parseInt(BANDINDICATOR);
             double a = Double.parseDouble(PB);
             double b1 = Double.parseDouble(v1);

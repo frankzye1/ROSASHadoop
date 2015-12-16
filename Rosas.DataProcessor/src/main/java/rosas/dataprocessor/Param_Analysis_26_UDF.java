@@ -11,6 +11,14 @@ public class Param_Analysis_26_UDF extends UDF
     {
         try
         {
+            if(DEF_VENDORNAME==null || DEF_VENDORNAME.equals("")|| DEF_VENDORNAME.equals("null")||DEF_VENDORNAME.equals("NULL"))
+            {
+                return 0;
+            }
+            if(ALPHA==null || ALPHA.equals("")|| ALPHA.equals("null")||ALPHA.equals("NULL"))
+            {
+                return 0;
+            }
             double a=Double.parseDouble(ALPHA.substring(ALPHA.length() - 1));
             double b1 = Double.parseDouble(v1);
             double b2 = Double.parseDouble(v2);

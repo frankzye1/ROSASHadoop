@@ -13,6 +13,22 @@ public class Param_Analysis_32_UDF extends UDF
     {
         try
         {
+            if(INOUTDOOR==null || INOUTDOOR.equals("")|| INOUTDOOR.equals("null")||INOUTDOOR.equals("NULL"))
+            {
+                return 0;
+            }
+            if(SNONINTRASEARCH==null || SNONINTRASEARCH.equals("")|| SNONINTRASEARCH.equals("null")||SNONINTRASEARCH.equals("NULL"))
+            {
+                return 0;
+            }
+            if(QRXLEVMIN==null || QRXLEVMIN.equals("")|| QRXLEVMIN.equals("null")||QRXLEVMIN.equals("NULL"))
+            {
+                return 0;
+            }
+            if(QRXLEVMINOFFSET==null || QRXLEVMINOFFSET.equals("")|| QRXLEVMINOFFSET.equals("null")||QRXLEVMINOFFSET.equals("NULL"))
+            {
+                return 0;
+            }
             if (SNONINTRASEARCH.length()<1)
             {
                 SNONINTRASEARCH="0";

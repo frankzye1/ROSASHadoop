@@ -90,13 +90,21 @@ public class Update_site_info_UDAF extends UDAF {
         public double terminate() {
 
             double sum = 0;
-            for (int i = 0; i < state.index; i++) {
+            for (int i = 0; i < state.num; i++) {
 
                 sum += state.list.get(i);
             }
+            if (state.index<state.num)
+            {
+                return sum/state.index;
+            }
+            else
+            {
+                return sum / state.num;
+            }
 
 
-            return sum / state.index;
+
         }
     }
 }

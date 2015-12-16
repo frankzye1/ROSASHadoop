@@ -11,7 +11,10 @@ public class Param_Analysis_46_UDF extends UDF
     {
         try
         {
-
+            if(str==null || str.equals("")|| str.equals("null")||str.equals("NULL"))
+            {
+                return 0;
+            }
             double V1=Double.parseDouble(v1.toUpperCase().replace("RF", ""));
             double a=0;
             String[] Strlist=Common.StrToList(str);

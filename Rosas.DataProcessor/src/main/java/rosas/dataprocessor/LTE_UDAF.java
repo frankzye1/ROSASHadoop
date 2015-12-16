@@ -6,12 +6,9 @@ import org.apache.hadoop.hive.ql.exec.UDAF;
 import org.apache.hadoop.hive.ql.exec.UDAFEvaluator;
 
 /**
- * Created by Zhuang on 2015/7/28.
- * LTE邻区漏定义分析
+ * Created by Administrator on 2015/11/25.
  */
-
-
-public class LTE_AdjacentAreaLeakageDefinition_UDAF extends UDAF {
+public class LTE_UDAF extends UDAF {
     public static class UDAFState {
         private int index = 0;
         private Long total = 0L;
@@ -19,7 +16,7 @@ public class LTE_AdjacentAreaLeakageDefinition_UDAF extends UDAF {
         private String op3 = "";
     }
 
-    static final Log LOG = LogFactory.getLog(LTE_AdjacentAreaLeakageDefinition_UDAF.class.getName());
+    static final Log LOG = LogFactory.getLog(MR_OverCoverageIndex_UDAF.class.getName());
 
     public static class Evaluator implements UDAFEvaluator {
 
@@ -54,7 +51,6 @@ public class LTE_AdjacentAreaLeakageDefinition_UDAF extends UDAF {
                     String op2 = operator2;
                     state.v3 = Double.parseDouble(value3);
                     state.op3 = operator3;
-
                     boolean result1 = Common.compare(a, op1, v1);
                     boolean result2 = Common.compare(b - a, op2, v2);
 
@@ -70,6 +66,7 @@ public class LTE_AdjacentAreaLeakageDefinition_UDAF extends UDAF {
             }
             return true;
         }
+
 
 
         public UDAFState terminatePartial() {
@@ -94,10 +91,15 @@ public class LTE_AdjacentAreaLeakageDefinition_UDAF extends UDAF {
         public double terminate() {
             LOG.info("terminate");
             if (state.total != 0) {
-                if (Common.compare((state.index * 1.0 / state.total), state.op3, state.v3))
-                    return (state.index * 1.0 / state.total);
-                else
-                    return 0;
+                try {
+                    if (Common.compare((state.index * 1.0 / state.total), state.op3, state.v3))
+                        return (state.index * 1.0 / state.total);
+                    else
+                        return 0;
+                }
+                catch (Exception e){
+                    return  0;
+                }
             } else
                 return 0;
         }

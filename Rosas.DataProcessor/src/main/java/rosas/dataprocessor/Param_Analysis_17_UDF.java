@@ -8,6 +8,12 @@ import org.apache.hadoop.hive.ql.exec.UDF;
 public class Param_Analysis_17_UDF extends UDF {
     public int evaluate(String BANDINDICATOR,String v_a, String op1, String v1,String logic,String op2,String v2,String op4,String v4) {
         try {
+            if(BANDINDICATOR==null || BANDINDICATOR.equals("")|| BANDINDICATOR.equals("null")||BANDINDICATOR.equals("NULL"))
+            {
+                return 0;
+            }
+
+
             Integer Band=Integer.parseInt(BANDINDICATOR);
             double a = Double.parseDouble(v_a);
 

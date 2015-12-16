@@ -12,7 +12,14 @@ public class Param_Analysis_27_UDF extends UDF
     {
         try
         {
-
+            if(BANDINDICATOR==null || BANDINDICATOR.equals("")|| BANDINDICATOR.equals("null")||BANDINDICATOR.equals("NULL"))
+            {
+                return 0;
+            }
+            if(QRXLEVMIN==null || QRXLEVMIN.equals("")|| QRXLEVMIN.equals("null")||QRXLEVMIN.equals("NULL"))
+            {
+                return 0;
+            }
             double a=Double.parseDouble(QRXLEVMIN)*2;
             double V1=Double.parseDouble(v1);
             double V2=Double.parseDouble(v2);

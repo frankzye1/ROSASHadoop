@@ -12,6 +12,10 @@ public class Param_Analysis_29_UDF extends UDF
     {
         try
         {
+            if(QRXLEVMINOFFSET==null || QRXLEVMINOFFSET.equals("")|| QRXLEVMINOFFSET.equals("null")||QRXLEVMINOFFSET.equals("NULL"))
+            {
+                return 0;
+            }
             double a=Double.parseDouble(QRXLEVMINOFFSET)*2;
             double V1=Double.parseDouble(v1);
 

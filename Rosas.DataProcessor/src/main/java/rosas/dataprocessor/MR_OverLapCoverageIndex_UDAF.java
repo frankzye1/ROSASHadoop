@@ -36,9 +36,10 @@ public class MR_OverLapCoverageIndex_UDAF extends UDAF {
         }
 
         //ev3(MR_LteNcRSRP,MR_LteScRSRP,op2,v2,YB_totle1)
-        public boolean iterate(int LteNcRSRP, int LteScRSRP,String operator, String value,Long total, int flag) throws Exception {
+        public boolean iterate(String LteNcRSRPstr, String LteScRSRPstr,String operator, String value,Long total, int flag) throws Exception {
             try {
                 LOG.info("go into iterate");
+                state.total = total;
                 if (flag != 1) {
                     return true;
                 }
@@ -46,13 +47,16 @@ public class MR_OverLapCoverageIndex_UDAF extends UDAF {
 
                     String op = operator;
                     double v = Double.parseDouble(value);
+                    double LteNcRSRP =Double.parseDouble(LteNcRSRPstr);
+                    double LteScRSRP=Double.parseDouble(LteScRSRPstr);
 
                     if (Common.compare(LteNcRSRP - LteScRSRP, op, v)) {
                         state.index++;
                     }
                 } catch (Exception e) {
+                    return true;
                 }
-                state.total = total;
+
             } catch (Exception e) {
                 LOG.error(e.toString());
                 //throw e;
@@ -82,7 +86,7 @@ public class MR_OverLapCoverageIndex_UDAF extends UDAF {
             LOG.info("terminate");
             if (state.total != 0) {
                 try {
-                    return Common.ReservedDecimal(state.index * 100.0 / state.total);
+                    return (state.index *1.0 / state.total);
                 } catch (Exception e) {
                     return 0;
                 }

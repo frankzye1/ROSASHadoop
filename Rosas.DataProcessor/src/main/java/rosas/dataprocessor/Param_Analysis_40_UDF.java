@@ -17,6 +17,15 @@ public class Param_Analysis_40_UDF extends UDF
     {
         try
         {
+            if(reg==null || reg.equals("")|| reg.equals("null")||reg.equals("NULL"))
+            {
+                return 0;
+            }
+            if(str==null || str.equals("")|| str.equals("null")||str.equals("NULL"))
+            {
+                return 0;
+            }
+
 
             double V1=Double.parseDouble(v1.toUpperCase().replace(reg.toUpperCase(), ""));
             double a=0;

@@ -12,6 +12,18 @@ public class Param_Analysis_33_UDF extends UDF
     {
         try
         {
+            if(THRESHSERVINGLOW==null || THRESHSERVINGLOW.equals("")|| THRESHSERVINGLOW.equals("null")||THRESHSERVINGLOW.equals("NULL"))
+            {
+                return 0;
+            }
+            if(QRXLEVMIN==null || QRXLEVMIN.equals("")|| QRXLEVMIN.equals("null")||QRXLEVMIN.equals("NULL"))
+            {
+                return 0;
+            }
+            if(QRXLEVMINOFFSET==null || QRXLEVMINOFFSET.equals("")|| QRXLEVMINOFFSET.equals("null")||QRXLEVMINOFFSET.equals("NULL"))
+            {
+                return 0;
+            }
             double a=(Double.parseDouble(THRESHSERVINGLOW)*2)+
                     (Double.parseDouble(QRXLEVMIN)*2)+
                     (Double.parseDouble(QRXLEVMINOFFSET)*2);

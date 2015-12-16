@@ -12,6 +12,14 @@ public class Param_Analysis_28_UDF extends UDF
     {
         try
         {
+            if(QOFFSETCELL==null || QOFFSETCELL.equals("")|| QOFFSETCELL.equals("null")||QOFFSETCELL.equals("NULL"))
+            {
+                return 0;
+            }
+            if(QHYST==null || QHYST.equals("")|| QHYST.equals("null")||QHYST.equals("NULL"))
+            {
+                return 0;
+            }
             double a=Double.parseDouble(QOFFSETCELL.replace("DB",""))+Double.parseDouble(QHYST.replace("DB",""));
             double V1=Double.parseDouble(v1);
             double V2=Double.parseDouble(v2);

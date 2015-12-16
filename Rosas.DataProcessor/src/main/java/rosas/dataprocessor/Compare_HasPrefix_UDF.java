@@ -8,6 +8,14 @@ import org.apache.hadoop.hive.ql.exec.UDF;
 public class Compare_HasPrefix_UDF extends UDF {
     public int evaluate(String v_a, String operator, String v_b,String prefix) {
         try {
+            if(v_a==null || v_a.equals("")|| v_a.equals("null")||v_a.equals("NULL"))
+            {
+                return 0;
+            }
+            if(v_b==null || v_b.equals("")|| v_b.equals("null")||v_b.equals("NULL"))
+            {
+                return 0;
+            }
             double a = Double.parseDouble(v_a.toUpperCase().replace(prefix.toUpperCase(),""));
             double b = Double.parseDouble(v_b);
             String op = operator;

@@ -11,6 +11,18 @@ public class Param_Analysis_34_UDF extends UDF {
     public int evaluate(String Str1, String Str2, String Str3,
                         String op1, String v1, String LOGIC1, String op2, String v2) {
         try {
+            if(Str1==null || Str1.equals("")|| Str1.equals("null")||Str1.equals("NULL"))
+            {
+                return 0;
+            }
+            if(Str2==null || Str2.equals("")|| Str2.equals("null")||Str2.equals("NULL"))
+            {
+                return 0;
+            }
+            if(Str3==null || Str3.equals("")|| Str3.equals("null")||Str3.equals("NULL"))
+            {
+                return 0;
+            }
             String[] Strlist1 = Common.StrToList(Str1);
             String[] Strlist2 = Common.StrToList(Str2);
             if (Strlist1.length == 0 || Strlist2.length == 0) {
