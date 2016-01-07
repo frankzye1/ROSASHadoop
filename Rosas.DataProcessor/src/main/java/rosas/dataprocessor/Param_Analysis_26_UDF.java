@@ -26,7 +26,7 @@ public class Param_Analysis_26_UDF extends UDF
             {
                 a=0.8;
             }
-            if (DEF_VENDORNAME == "NOKIA")
+            if (DEF_VENDORNAME == "NOKIA" || DEF_VENDORNAME.toUpperCase() =="ERICSSON")
             {
                 if (Common.compare(a, op1, b1))
                 {

@@ -13,7 +13,7 @@ public class Param_Analysis_35_UDFTEST {
     public void evaluatesExpression() {
         ave = new Param_Analysis_35_UDF();
         try {
-            int v = ave.evaluate("4","5","6","ge","24","and","le","30");
+            int v = ave.evaluate("{(38400,4)}","{(38400,-63)}","0","ge","-1224","and","le","3011");
             Assert.assertEquals(26, v);
         } catch (Exception e) {
 

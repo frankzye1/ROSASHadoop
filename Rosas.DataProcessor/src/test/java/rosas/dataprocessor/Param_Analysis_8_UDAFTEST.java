@@ -13,7 +13,7 @@ public class Param_Analysis_8_UDAFTEST {
     public void evaluatesExpression() {
         ave = new Param_Analysis_8_UDAF.Evaluator();
         try {
-            ave.iterate("a","a");
+            ave.iterate("aaaaaa","aaaaaa");
             int v = ave.terminate();
             Assert.assertEquals(1, v);
         } catch (Exception e) {

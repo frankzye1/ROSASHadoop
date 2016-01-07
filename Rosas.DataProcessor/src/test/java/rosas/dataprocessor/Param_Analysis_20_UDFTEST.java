@@ -13,7 +13,7 @@ public class Param_Analysis_20_UDFTEST {
     public void evaluatesExpression() {
         ave = new Param_Analysis_20_UDF();
         try {
-            int v = ave.evaluate("N104","lt","101","or","gt","106");
+            int v = ave.evaluate("-104","lt","-105","or","gt","-100");
             Assert.assertEquals(0, v);
         } catch (Exception e) {
 

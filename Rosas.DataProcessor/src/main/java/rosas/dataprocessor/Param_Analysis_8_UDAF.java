@@ -29,7 +29,7 @@ public class Param_Analysis_8_UDAF extends UDAF {
 
         public void init() {
             LOG.info("go into init");
-            state.count = 0;
+            //state.count = 0;
         }
 
         public boolean iterate(String a,String b) throws Exception {

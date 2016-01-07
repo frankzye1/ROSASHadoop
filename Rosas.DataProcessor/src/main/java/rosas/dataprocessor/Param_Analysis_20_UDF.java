@@ -15,9 +15,17 @@ public class Param_Analysis_20_UDF extends UDF {
                 return 0;
             }
 
-            PREAMBLEINITIALRTP=Pattern.compile("[^0-9]").matcher(PREAMBLEINITIALRTP).replaceAll("");
-            v1=Pattern.compile("[^0-9]").matcher(v1).replaceAll("");
-            v2=Pattern.compile("[^0-9]").matcher(v2).replaceAll("");
+
+
+            if(PREAMBLEINITIALRTP.contains("-")) {
+                PREAMBLEINITIALRTP = Pattern.compile("[^0-9]").matcher(PREAMBLEINITIALRTP).replaceAll("");
+                PREAMBLEINITIALRTP="-"+PREAMBLEINITIALRTP;
+            }
+            else
+            {
+                PREAMBLEINITIALRTP = Pattern.compile("[^0-9]").matcher(PREAMBLEINITIALRTP).replaceAll("");
+            }
+
 
             double a = Double.parseDouble(PREAMBLEINITIALRTP);
             double b1 = Double.parseDouble(v1);
@@ -34,7 +42,7 @@ public class Param_Analysis_20_UDF extends UDF {
         }
         catch (Exception e)
         {
-            return  -1;
+            return  0;
         }
     }
 }
