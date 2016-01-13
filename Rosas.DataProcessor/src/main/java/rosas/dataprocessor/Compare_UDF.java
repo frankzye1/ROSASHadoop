@@ -23,7 +23,7 @@ public class Compare_UDF extends UDF {
         }
         catch (Exception e)
         {
-            return  -1;
+            return  0;
         }
     }
 }
