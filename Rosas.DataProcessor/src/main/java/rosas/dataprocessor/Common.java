@@ -1,15 +1,19 @@
 package rosas.dataprocessor;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Zhuang on 2015/8/6.
  */
 public class Common {
 
-    //±È½Ïº¯Êı ÊäÈë(²ÎÊı1,ÔËËã·û,²ÎÊı2)  ·µ»Ø true or false
+    //ï¿½È½Ïºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½1,ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½2)  ï¿½ï¿½ï¿½ï¿½ true or false
     public static boolean compare(double temp1, String op, double temp2) {
         switch (OPERATOR.toOPERATOR(op.toUpperCase())) {
             case GT:
@@ -37,7 +41,7 @@ public class Common {
         }
     }
 
-    //Óë»òº¯Êı  ÊäÈë(²ÎÊı1,"and"/"or",²ÎÊı2)
+    //ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½1,"and"/"or",ï¿½ï¿½ï¿½ï¿½2)
     public static boolean LogicFun(boolean temp1, String logic, boolean temp2) {
         switch (LOGIC.toLOGIC(logic.toLowerCase())) {
             case and:
@@ -69,7 +73,7 @@ public class Common {
         return min_index;
     }
 
-    //»ñÈ¡valueÔÚlistÖĞµÄindex
+    //ï¿½ï¿½È¡valueï¿½ï¿½listï¿½Ğµï¿½index
     public static int GetIndexFromList(List<Integer> list, int value) {
         for (int i = 0; i < list.size(); i++) {
             if (value == list.get(i)) {
@@ -98,6 +102,153 @@ public class Common {
         String[] Strlist = Str.replace("{", "").replace("}", "").replace("(", "").split("\\),");
         return Strlist;
     }
+
+
+    //ç¼ºå¤±å€¼å¤„ç†
+    public  static  String[] MissingValueProcess1(String[] str)
+    {
+        int MissingValueCount=0;
+        for (int i=0 ;i<str.length;i++)
+        {
+            if (str[i]==null || str[i]=="" )
+            {
+                MissingValueCount++;
+                int front_1=i-1<0?str.length+(i-1):i-1;
+                int front_2=i-2<0?str.length+(i-2):i-2;
+                int after_1=i+1>=str.length?i+1-str.length:i+1;
+                int after_2=i+2>=str.length?i+2-str.length:i+2;
+                double sum=0;//å‰ån ä¸ªæ•°çš„å’Œ
+                double IsNotNullCount=0;
+                if (str[front_1]!=null&&str[front_1]!="")
+                {
+                    try {
+                        sum+=Double.parseDouble(str[front_1]);
+                        IsNotNullCount++;
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                }
+
+                if (str[front_2]!=null&&str[front_2]!="")
+                {
+                    try {
+                        sum+=Double.parseDouble(str[front_2]);
+                        IsNotNullCount++;
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                }
+
+                if (str[after_1]!=null&&str[after_1]!="")
+                {
+                    try {
+                        sum+=Double.parseDouble(str[after_1]);
+                        IsNotNullCount++;
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                }
+
+                if (str[after_2]!=null&&str[after_2]!="")
+                {
+                    try {
+                        sum+=Double.parseDouble(str[after_2]);
+                        IsNotNullCount++;
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                }
+
+                if (IsNotNullCount==0)
+                {
+
+                    str[i]="-118";
+                }
+                else
+                {
+                    str[i]=Double.toString(Math.round(sum*10000.0/IsNotNullCount)/10000.0);
+
+                }
+
+            }
+
+
+        }
+
+        if (MissingValueCount>200)
+        {
+            str=new String[]{};
+        }
+        return str;
+    }
+
+
+
+    //ç¼ºå¤±å€¼å¤„ç†
+    public  static  String[] MissingValueProcess(String[] str)
+    {
+        int MissingValueCount=0;
+        for (int i=0 ;i<str.length;i++)
+        {
+            if (str[i]==null || str[i]=="" )
+            {
+                MissingValueCount++;
+                int IsNotNullCount=0;
+                double sum=0;
+
+                for(int j=1;j<10;j++)
+                {
+                    if (str[i-j<0?0:i-j]!=null&&str[i-j<0?0:i-j]!="")
+                    {
+                        IsNotNullCount++;
+                        sum+=Double.parseDouble(str[i-j<0?0:i-j]);
+
+                    }
+
+                    if(str[i+j>=str.length?str.length-1:i+j]!=null&&str[i+j>=str.length?str.length-1:i+j]!="")
+                    {
+                        IsNotNullCount++;
+                        sum+=Double.parseDouble(str[i+j>=str.length?str.length-1:i+j]);
+                    }
+
+                    if (IsNotNullCount>0)
+                    {
+                        str[i]=Double.toString(Math.round(sum * 100.0 / IsNotNullCount) / 100.0);
+                        break;
+                    }
+
+
+                }
+
+
+
+            }
+
+
+        }
+
+        if (MissingValueCount>200)
+        {
+            str=new String[]{};
+        }
+        return str;
+    }
+
+
+
+
 }
 
 

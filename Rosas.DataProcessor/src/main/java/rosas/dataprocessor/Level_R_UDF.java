@@ -1,9 +1,11 @@
 package rosas.dataprocessor;
 
+import org.apache.hadoop.hive.ql.exec.UDF;
+
 /**
  * Created by Administrator on 2016/1/13.
  */
-public class Level_R_UDF {
+public class Level_R_UDF extends UDF {
     public int evaluate(String valuestr) {
         try {
             String[] Strlist = Common.StrToList(valuestr);
