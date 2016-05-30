@@ -14,15 +14,15 @@ public class IF_AvgTail15_85_UDF  extends UDF {
             double y=0.0;
             for (int i=0;i<str.length;i++)
             {
-                if (i<85) {
+                if (i<=80&&i>=9) {
                     x += Double.parseDouble(str[i]);
                 }
-                else
+                else if (i<=91&&i>=85)
                 {
                     y+=Double.parseDouble(str[i]);
                 }
             }
-            return Math.round(((y/15)-(x/85))*1000.0)/1000.0;
+            return Math.round(((y/7)-(x/72))*1000.0)/1000.0;
 
         } catch (Exception e) {
             return 0;

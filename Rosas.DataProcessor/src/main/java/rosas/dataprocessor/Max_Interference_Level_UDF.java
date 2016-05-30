@@ -27,7 +27,7 @@ public class Max_Interference_Level_UDF extends UDF {
             }
             return max;
         } catch (Exception e) {
-            return 0;
+            return -1000000;
         }
     }
 }

@@ -20,7 +20,7 @@ public class Interference_Type_13_UDF extends UDF {
             }
             return max;
         } catch (Exception e) {
-            return -1;
+            return -120;
         }
     }
 }
