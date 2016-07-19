@@ -90,19 +90,23 @@ public class MR_OverCoverageIndex_UDAF extends UDAF {
         }
 
         public int terminate() {
-            LOG.info("terminate");
-            if (state.total != 0) {
-                try {
-                    if (Common.compare((state.index * 1.0 / state.total), state.op3, state.v3))
-                        return 1;
-                    else
+            try {
+                LOG.info("terminate");
+                if (state.total != 0) {
+                    try {
+                        if (Common.compare((state.index * 1.0 / state.total), state.op3, state.v3))
+                            return 1;
+                        else
+                            return 0;
+                    } catch (Exception e) {
                         return 0;
-                }
-                catch (Exception e){
-                    return  0;
-                }
-            } else
+                    }
+                } else
+                    return 0;
+            }catch (Exception ex)
+            {
                 return 0;
+            }
         }
     }
 }

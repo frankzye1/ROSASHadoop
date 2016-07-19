@@ -62,7 +62,8 @@ public class Concat_Group_UDAF   extends UDAF {
 
         public String terminate() {
             LOG.info("terminate");
-                return state.result_str.substring(0,state.result_str.length()-1);
+            int length=state.result_str.length()>400?400:state.result_str.length();
+                return state.result_str.substring(0, length-1);
         }
     }
 }

@@ -4,6 +4,7 @@ import org.apache.commons.lang.StringUtils;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -12,6 +13,21 @@ import java.util.regex.Pattern;
  * Created by Zhuang on 2015/8/6.
  */
 public class Common {
+
+    //managers(输入的字符串)，regex（正则表达式），replace_str（要替换为空的字符）
+    public static List<String> getTeacherList(String managers,String regex,List<String> replace_str) {
+        List<String> ls = new ArrayList<String>();
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(managers);
+        while (matcher.find()) {
+            String temp=matcher.group();
+            for (String replace:replace_str) {
+                temp=temp.replace(replace, "");
+            }
+            ls.add(temp);
+        }
+        return ls;
+    }
 
     //�ȽϺ��� ����(����1,�����,����2)  ���� true or false
     public static boolean compare(double temp1, String op, double temp2) {
@@ -85,7 +101,7 @@ public class Common {
     }
 
     public static double ReservedDecimal(double result) {
-        DecimalFormat df = new DecimalFormat("#.######");
+       /* DecimalFormat df = new DecimalFormat("#.######");
         String returnStr = df.format(result);
         if (returnStr.contains("E")) {
             BigDecimal bd = new BigDecimal(returnStr);
@@ -94,8 +110,11 @@ public class Common {
                 index = bd.toPlainString().length();
             }
             returnStr = bd.toPlainString().substring(0, index);
-        }
-        return Double.parseDouble(returnStr);
+        }*/
+
+        result=Math.round(result*10000.0)/10000.0;
+
+        return result;
     }
 
     public static String[] StrToList(String Str) {
@@ -246,6 +265,27 @@ public class Common {
         return str;
     }
 
+    public  static  Double FUN1(Double param)
+    {
+        try {
+            return  Math.pow(10, param / 10);
+        }catch (Exception ex)
+        {
+            return 0.0;
+        }
+
+    }
+
+    public  static  Double FUN2(Double param)
+    {
+        try {
+            return  10*Math.log10(param);
+        }catch (Exception ex)
+        {
+            return 0.0;
+        }
+
+    }
 
 
 

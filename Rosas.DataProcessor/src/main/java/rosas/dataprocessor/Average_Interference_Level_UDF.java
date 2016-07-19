@@ -18,6 +18,10 @@ public class Average_Interference_Level_UDF extends UDF {
                 }
             }
             double avg=10*Math.log10(sum/effetiveNum);
+            if(Double.isNaN(avg)||Double.isInfinite(avg))
+            {
+                return 0;
+            }
             return avg;
         } catch (Exception e) {
             return 0;

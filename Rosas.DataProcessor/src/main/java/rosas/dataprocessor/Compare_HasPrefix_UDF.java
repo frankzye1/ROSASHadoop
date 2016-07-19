@@ -17,7 +17,7 @@ public class Compare_HasPrefix_UDF extends UDF {
                 return 0;
             }
             double a = Double.parseDouble(v_a.toUpperCase().replace(prefix.toUpperCase(),""));
-            double b = Double.parseDouble(v_b);
+            double b = Double.parseDouble(v_b.toUpperCase().replace(prefix.toUpperCase(),""));
             String op = operator;
             if (Common.compare(a, op, b)) {
                 return 1;

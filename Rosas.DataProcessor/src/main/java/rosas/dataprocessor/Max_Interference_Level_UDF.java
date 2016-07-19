@@ -25,6 +25,10 @@ public class Max_Interference_Level_UDF extends UDF {
                     }
                 }
             }
+            if(Double.isNaN(max)||Double.isInfinite(max))
+            {
+                return 0;
+            }
             return max;
         } catch (Exception e) {
             return -1000000;
