@@ -17,32 +17,11 @@ public class letTest {
     @Test
     public void evaluatesExpression() {
 
-
-        Double asd=Common.FUN1(121D);
-        Double asd1=Common.FUN2(asd*2);
-
-        InteroperabilityParameters_8_UDF aaa=new InteroperabilityParameters_8_UDF();
-        double a=aaa.evaluate("{(NA,NA,2)}\n" +
-                "{(NA,3),(NA,6)}\n" +
-                "{(NA,4)}\n" +
-                "{NA,{38950,37900,38098},}\n" +
-                "{NA,{39148,38098,38950,38400},0}\n" +
-                "{(NA,6)}\n" +
-                "{(NA,0),(NA,8)}\n" +
-                "{(NA,0),(NA,30)}\n" +
-                "{}\n" +
-                "{(NA,{37900,38098,38950,39148,38952},3)}\n" +
-                "{(NA,{37900,38098,38950,40936},3)}\n" +
-                "{(NA,{37900,38100,38950,38544},3)}\n" +
-                "{(NA,{37900,38950,38350},3)}\n" +
-                "{(NA,{37900,38950,39148,38098,38544},3)}\n" +
-                "{(NA,{37900,39250,38100,38400},3)}\n" +
-                "{(NA,{38100,38350,38950},3)}\n");
-
-
-        InteroperabilityParameters_5_UDF aa=new InteroperabilityParameters_5_UDF();
-        double b =aa.evaluate("{NA,{28950},0}" ,0.5, 0.0, "GT", 3.0);
-
+        InteroperabilityParameters_11_UDF aaa=new InteroperabilityParameters_11_UDF();
+        String aa=aaa.evaluate("{NA,{38950,37900,38400},30}");
+        String bb=aaa.evaluate("{(1,{38950,37900,38350,1650,100,1825,500},3),(2,{38950,37900,38350,1650,100,1825,500},3),(3,{38950,37900,38350,1650,100,1825,500},3),(4,{38950,37900,38350,1650,100,1825,500},3),(5,{38950,37900,38350,1650,100,1825,500},3),(6,{38950,37900,38350,1650,100,1825,500},3),(7,{38950,37900,38350,1650,100,1825,500},3),(8,{38950,37900,38350,1650,100,1825,500},3),(9,{38950,37900,38350,1650,100,1825,500},3)}");
+        String cc=aaa.evaluate("{(NA,NA,6)}");
+        String ss=aaa.evaluate("{(1,NA,2),(2,NA,2),(3,NA,2),(4,NA,2),(5,NA,2),(6,NA,2),(7,NA,2),(8,NA,2),(9,NA,2)}");
         return;
 
     }

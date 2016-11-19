@@ -121,7 +121,10 @@ public class Common {
         String[] Strlist = Str.replace("{", "").replace("}", "").replace("(", "").split("\\),");
         return Strlist;
     }
-
+    public static String[] StrToList1(String Str) {
+        String[] Strlist = Str.replace("{", "").replace("}", "").split("\\),\\(");
+        return Strlist;
+    }
 
     //缺失值处理
     public  static  String[] MissingValueProcess1(String[] str)
