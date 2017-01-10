@@ -15,6 +15,8 @@ public class Param_Analysis_46_UDF extends UDF
             {
                 return 0;
             }
+
+
             double V1=Double.parseDouble(v1.toUpperCase().replace("RF", ""));
             double a=0;
             String[] Strlist=Common.StrToList(str);
