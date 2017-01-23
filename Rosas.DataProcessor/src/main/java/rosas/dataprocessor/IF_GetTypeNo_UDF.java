@@ -15,7 +15,7 @@ public class IF_GetTypeNo_UDF extends UDF {
 
             //网外干扰：
             //斜率（9-49）<-0.10  and 斜率（50-89）>0.10  and聚类突变top数量值<10 and峰值指示向量不存在（20-80）中
-            if (slope9to49 < -0.10 && slope50to90 > 0.10 && ClusterMutationTopCount < 10 && !fun1(peakindicatorvector,20, 80)) {
+            if (slope9to49 < -0.10 && slope50to90 > 0.10 && ClusterMutationTopCount < 10 && !fun1(peakindicatorvector,20, 80) && standarddeviation<2.0 ) {
                 return 9;
             }
             //杂散干扰：
@@ -38,8 +38,8 @@ public class IF_GetTypeNo_UDF extends UDF {
                 return 4;
             }
             //阻塞干扰：
-            //IF -0.1<斜率<0.1 and平滑度>0.9 and 0-15存在峰值指示量and 相关性系数>0.60 and 均值(10-89prb)>-110 and 聚类突变top数量值<10  and  |斜率（9-49）|<0.1 and|斜率（50-89）|<0.1
-            else if ((xgxs == 1111.0 || xgxs > 0.6) && slope > -0.1 && slope < 0.1 && smoothness > 0.9 && fun1(peakindicatorvector,0, 15) && avg10to89 > -110.0 && ClusterMutationTopCount < 10 && Math.abs(slope9to49) < 0.1 && Math.abs(slope50to90) < 0.1) {
+            //IF -0.15<斜率<0.15 and平滑度>0.9 and 0-15存在峰值指示量and 相关性系数>0.60 and 均值(10-89prb)>-110 and 聚类突变top数量值<10  and  |斜率（9-49）|<0.1 and|斜率（50-89）|<0.1
+            else if ((xgxs == 1111.0 || xgxs > 0.6) && slope > -0.15 && slope < 0.15 && smoothness > 0.9 && fun1(peakindicatorvector,0, 15) &&  ClusterMutationTopCount < 10 && Math.abs(slope9to49) < 0.1 && Math.abs(slope50to90) < 0.1) {
                 return 6;
             }
             //宽频干扰：
