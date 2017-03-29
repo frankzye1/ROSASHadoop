@@ -11,7 +11,7 @@ public class InteroperabilityParameters_6_UDF  extends UDF {
             String[] list = Common.StrToList(str);
             for (int i = 0; i < list.length; i++) {
                 double a=Double.parseDouble(list[i].replace(")","").split(",")[1]);
-                if ( a< value) {
+                if ( a> value) {
                     return 1;
                 }
             }

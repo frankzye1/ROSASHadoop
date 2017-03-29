@@ -216,7 +216,20 @@ public class Common {
         return str;
     }
 
+public  static  int GetEffectValueCount(String[] str)
+{
+    int MissingValueCount=0;
+    for (int i=0 ;i<str.length;i++)
+    {
+        if (str[i]==null || str[i]=="" )
+        {
+            MissingValueCount++;
+        }
 
+    }
+
+    return str.length-MissingValueCount;
+}
 
     //缺失值处理
     public  static  String[] MissingValueProcess(String[] str)

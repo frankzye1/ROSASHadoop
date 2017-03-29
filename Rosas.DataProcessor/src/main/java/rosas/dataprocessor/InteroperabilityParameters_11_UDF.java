@@ -16,7 +16,7 @@ public class InteroperabilityParameters_11_UDF  extends UDF {
                 {
                     String aa=strlist[i].replace("(","").replace(")","");
                     String[] kk=aa.split(",");
-                    if (kk[0].equals("NA")||kk[0].equals("1"))
+                    if (kk[0].equals("NA")||kk[0].equals("9"))
                     {
 
                         return  kk[kk.length-1];

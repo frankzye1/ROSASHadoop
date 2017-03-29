@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/6/24.
+ * Created by zhuang on 2017/3/27.
  */
-public class InteroperabilityParameters_8_UDF  extends UDF {
+public class Convert_A3HysteresisInterFCov_UDF   extends UDF {
     public int evaluate(String str) {
         try {
             List<String> replace_str=new ArrayList<String>();
