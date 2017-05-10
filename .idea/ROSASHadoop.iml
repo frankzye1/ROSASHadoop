@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5">
     <output url="file://$MODULE_DIR$/Rosas.DataProcessor/target/classes" />
     <output-test url="file://$MODULE_DIR$/Rosas.DataProcessor/target/test-classes" />
     <content url="file://$MODULE_DIR$/Rosas.DataProcessor">
@@ -9,7 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Rosas.DataProcessor/src/main/resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/Rosas.DataProcessor/target" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.7" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Packages" level="project" />
   </component>
