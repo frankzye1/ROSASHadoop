@@ -23,8 +23,6 @@ public class letTest {
         //String cc=aaa.evaluate("{(NA,NA,6)}");
         //String ss=aaa.evaluate("{(1,NA,2),(2,NA,2),(3,NA,2),(4,NA,2),(5,NA,2),(6,NA,2),(7,NA,2),(8,NA,2),(9,NA,2)}");
         //String[] a= Common.MissingValueProcess(new String[]{"89",null,"89","89",null,"90","89",null,"89","95",null,null,null,null,null});
-        InteroperabilityParameters_11_UDF ak=new InteroperabilityParameters_11_UDF();
-String kkkk=ak.evaluate("{(1,NA,2),(2,NA,2),(3,NA,2),(4,NA,2),(5,NA,2),(6,NA,2),(7,NA,2),(8,NA,2),(9,NA,44)}");
 
 
         return;
