@@ -4,13 +4,18 @@ import org.apache.hadoop.hive.ql.exec.UDF;
 import parquet.it.unimi.dsi.fastutil.doubles.DoubleArrayList;
 import parquet.it.unimi.dsi.fastutil.doubles.DoubleList;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * Created by Administrator on 2015/12/3.
  */
 public class MR_SectorCoverage_NEW_UDF extends UDF {
     public double evaluate(String[] rates) {
         try {
-            DoubleList aoa = new DoubleArrayList();
+            List<Double> aoa = new ArrayList<Double>();
+
             for (int i = 0; i < rates.length; i++) {
                 double a = 0;
                 try {
