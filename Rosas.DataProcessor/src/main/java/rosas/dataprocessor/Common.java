@@ -4,8 +4,7 @@ import org.apache.commons.lang.StringUtils;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -304,6 +303,29 @@ public  static  int GetEffectValueCount(String[] str)
     }
 
 
+    public static String commonCode(String a, String b) {
+        try {
+            String[] Strlist=b.replace("{","").replace("}","").replace("(","").replace(")","").split(",");
+            Set<String> set = set = new TreeSet<String>();//新建一个set集合
+
+            for(int i=0;i<Strlist.length;i++)
+            {
+                if(i%2 != 0) {
+                    set.add(Strlist[i]);
+                }
+            }
+            String c="";
+            for (String str : set) {
+                c+=str;
+            }
+            return String.valueOf(c);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return  "a";
+        }
+    }
 
 }
 
